@@ -1,4 +1,3 @@
-
 export interface IMove {
     fromX: number;
     fromY: number;
@@ -46,6 +45,20 @@ export default class Game {
     private init() {
         this.board = [
             [
+                null, new Piece(Color.DARK), null, new Piece(Color.DARK),
+                null, new Piece(Color.DARK), null, new Piece(Color.DARK),
+            ],
+            [
+                new Piece(Color.DARK), null, new Piece(Color.DARK), null,
+                new Piece(Color.DARK), null, new Piece(Color.DARK), null,
+            ],
+            [
+                null, new Piece(Color.DARK), null, new Piece(Color.DARK),
+                null, new Piece(Color.DARK), null, new Piece(Color.DARK),
+            ],
+            [null, null, null, null, null, null, null, null],
+            [null, null, null, null, null, null, null, null],
+            [
                 new Piece(Color.LIGHT), null, new Piece(Color.LIGHT), null,
                 new Piece(Color.LIGHT), null, new Piece(Color.LIGHT), null
             ],
@@ -56,20 +69,6 @@ export default class Game {
             [
                 new Piece(Color.LIGHT), null, new Piece(Color.LIGHT), null,
                 new Piece(Color.LIGHT), null, new Piece(Color.LIGHT), null
-            ],
-            [null, null, null, null, null, null, null, null],
-            [null, null, null, null, null, null, null, null],
-            [
-                new Piece(Color.DARK), null, new Piece(Color.DARK), null,
-                new Piece(Color.DARK), null, new Piece(Color.DARK), null,
-            ],
-            [
-                null, new Piece(Color.DARK), null, new Piece(Color.DARK),
-                null, new Piece(Color.DARK), null, new Piece(Color.DARK),
-            ],
-            [
-                new Piece(Color.DARK), null, new Piece(Color.DARK), null,
-                new Piece(Color.DARK), null, new Piece(Color.DARK), null,
             ],
         ]
     }
@@ -93,6 +92,21 @@ export default class Game {
         return VALIDATION_RESULT.INVALID_TARGET;
     }
 
+    public getPlayerMoves(color: Color) {
+        const moves: { moves: IMove[], beats: IMove[] }[] = [];
+        this.board.forEach((row, y) => {
+            const results = row
+                .map((piece, x) => {
+                    return (piece && piece.color === color) &&
+                        this.getPossibleMoves(x, y, color, piece.king);
+                })
+                .filter(moves => moves)
+            moves.push(...results);
+        });
+
+        return moves;
+    }
+
     /**
      * Checks all possible moves for a given piece from the provided position.
      * @param x x origin
@@ -105,12 +119,12 @@ export default class Game {
         const ur = this.checkDirection(x, y, 1, 1, color, isKing);
         const ll = this.checkDirection(x, y, -1, -1, color, isKing);
         const lr = this.checkDirection(x, y, 1, -1, color, isKing);
-        
+
         return {
             moves: ul.moves.concat(ur.moves, ll.moves, lr.moves),
             beats: ul.beats.concat(ur.beats, ll.beats, lr.beats),
         }
-        
+
     }
 
     /**
