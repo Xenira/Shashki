@@ -1,0 +1,15 @@
+.dark {
+    background-color: darkslategray;
+}
+
+.container-row {
+    justify-content: center;
+    align-content: center;
+}
+
+mat-grid-list {
+    flex: 1;
+    min-width: 300px;    
+    max-width: 66vh;
+    padding-bottom: 0 !important;
+}

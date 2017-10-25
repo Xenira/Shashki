@@ -1,3 +1,9 @@
-<p>
-  board works!
-</p>
+<div class="container-row">
+  <mat-grid-list [cols]="board[0].length">
+    <div class="row" *ngFor="let row of board; let y = index">
+      <mat-grid-tile class="field" *ngFor="let piece of row; let x = index" [class.dark]="(y * board.length + x) % 2 !== y % 2">
+        <app-piece *ngIf="piece" [piece]="piece" [moves]="getMoves(x, y, piece)"></app-piece>
+      </mat-grid-tile>
+    </div>
+  </mat-grid-list>
+</div>
