@@ -1,0 +1,14 @@
+{
+    "npmts": {
+        "mode": "custom",
+        "test": false,
+        "ts": {
+            "./src/*.ts": "./dist"
+        },
+        "tsOptions": {
+            "declaration": true,
+            "target": "ES6"
+        },
+        "cli": false
+    }
+}

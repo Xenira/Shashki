@@ -2,20 +2,25 @@
   "name": "shashki-logic",
   "version": "1.0.0",
   "description": "Computition for shashki moves",
-  "main": "dist/index.js",
+  "main": "./dist/game.js",
+  "typings": "./dist/game.d.ts",
   "scripts": {
-    "test": "nodemon --exec jasmine-ts -e ts"
+    "test": "nodemon --exec jasmine-ts -e ts",
+    "build": "npmts"
   },
   "author": "Lasse Sprengel",
   "license": "MIT",
-  "dependencies": {
-  },
+  "files": [
+    "dist"
+  ],
+  "dependencies": {},
   "devDependencies": {
     "@types/jasmine": "^2.6.0",
     "@types/node": "^8.0.46",
     "jasmine": "^2.8.0",
+    "jasmine-ts": "^0.2.1",
     "nodemon": "^1.12.1",
-    "ts-node": "^3.3.0",
-    "jasmine-ts": "^0.2.1"
+    "npmts": "^8.0.24",
+    "ts-node": "^3.3.0"
   }
 }
