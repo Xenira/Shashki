@@ -1,0 +1,9 @@
+<div class="container-column">
+  <button #newMenuTrigger mat-button color="primary" [matMenuTriggerFor]="newMenu">NEW GAME</button>
+  <mat-menu #newMenu="matMenu">
+      <button mat-menu-item (click)="newGame()" [style.width.px]="newMenuTrigger._elementRef.nativeElement.clientWidth">PUBLIC</button>
+      <button mat-menu-item (click)="newGame(false)" [style.width.px]="newMenuTrigger._elementRef.nativeElement.clientWidth">PRIVATE</button>
+  </mat-menu>
+  <app-divider text="OR"></app-divider>
+  <button mat-button color="accent" (click)="joinGame()">JOIN GAME</button>
+</div>

@@ -1,0 +1,23 @@
+.container-column {
+    justify-content: space-evenly;
+    align-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+button {
+    width: 50%;
+    font-size: 150%;
+}
+
+:host {
+    flex: 1;
+}
+
+mat-menu-item {
+    text-align: center;
+}
+
+mat-menu {
+    display: none;
+}
