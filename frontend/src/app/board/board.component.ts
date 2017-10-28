@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameService } from '../game.service';
 import { Piece, Color, IMove } from 'shashki-logic';
+import { SocketService } from '../socket.service';
 
 @Component({
   selector: 'app-board',
@@ -15,12 +16,15 @@ export class BoardComponent implements OnInit {
   board: Piece[][];
   moves: { moves: IMove[], beats: IMove[] } = { moves: [], beats: [] };
   selectedMoves: IMove[];
+  rotated = false;
 
-  constructor(private _game: GameService) { }
+  constructor(private _game: GameService, private _socket: SocketService) { }
 
   ngOnInit() {
     this.updateMoves();
     this.board = this._game.getBoard();
+    this.rotated = !!this._game.playerColor;
+    this._socket.move.subscribe((move) => this.updateMoves());
   }
 
   getMoves(x: number, y: number) {
@@ -32,7 +36,6 @@ export class BoardComponent implements OnInit {
 
   updateMoves() {
     this.moves = this._game.getMoves();
-    console.log(this.moves);
   }
 
   isHighlighted(x: number, y: number) {
@@ -41,7 +44,7 @@ export class BoardComponent implements OnInit {
 
   move(x: number, y: number) {
     const move = this.selectedMoves && this.selectedMoves.filter((m) => m.toX === x && m.toY === y);
-
+    this.selectedMoves = null;
     if (move && move.length > 0) {
       this._game.performMove(move[0]);
     }

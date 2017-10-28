@@ -26,3 +26,7 @@ button {
     background-color: rgba(136, 226, 32, 0.781);
     height: 100%;
 }
+
+.rotated {
+    transform: rotate(180deg) translateY(100%);
+}

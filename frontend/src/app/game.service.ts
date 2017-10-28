@@ -13,7 +13,9 @@ export class GameService {
 
   beats: {[key: string]: boolean} = {};
 
-  constructor(private _socket: SocketService) { }
+  constructor(private _socket: SocketService) {
+    this._socket.move.subscribe((move) => this.game.performMove(move));    
+  }
 
   getBoard() {
     return this.game.board;
