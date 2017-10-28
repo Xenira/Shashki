@@ -26,7 +26,7 @@ export class SocketService {
       throw new Error('Already connected.');
     }
     this.socket = io('localhost:3000');
-    this.socket.on('notification', this._notification.showNotification);
+    this.socket.on('notification', (message) => this._notification.showNotification(message));
     this.socket.on('start', (color, id) => this.start.next({ color, id }));
     this.socket.on('gameid', (id) => this.gameid.next(id));
     this.socket.on('move', (move) => this.move.next(move));
