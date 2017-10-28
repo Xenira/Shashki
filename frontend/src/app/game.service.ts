@@ -2,7 +2,8 @@
 
 import { Injectable } from '@angular/core';
 import Game from 'shashki-logic';
-import { Piece, Color } from 'shashki-logic';
+import { Piece, Color, IMove } from 'shashki-logic';
+import { SocketService } from './socket.service';
 
 @Injectable()
 export class GameService {
@@ -12,29 +13,26 @@ export class GameService {
 
   beats: {[key: string]: boolean} = {};
 
-  constructor() { }
+  constructor(private _socket: SocketService) { }
 
   getBoard() {
     return this.game.board;
   }
 
-  getMoves(x: number, y: number, piece: Piece) {
-    if (this.playerColor !== piece.color || !this.isMyTurn()) {
-      return { moves: [], beats: [] };
-    }
-    const moves = this.game.getPossibleMoves(x, y, piece.color, piece.king);
-    if (moves.beats.length || moves.moves.length) {
-      console.log(x, y, piece, moves);
-    }
-    return moves;
+  getMoves(): { moves: IMove[], beats: IMove[] } {
+    return this.game.getPlayerMoves(this.playerColor);
   }
 
   isMyTurn() {
     return this.game.currentPlayer === this.playerColor;
   }
 
-  canBeat() {
-
+  reset(color: Color) {
+    this.playerColor = color;
+    this.game = new Game();
   }
 
+  performMove(move: IMove) {
+    this._socket.performMove(move);
+  }
 }
