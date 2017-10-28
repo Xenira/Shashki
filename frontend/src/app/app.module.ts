@@ -8,12 +8,24 @@ import { GameService } from './game.service';
 import { BaseRouterModule } from './base-router/base-router.module';
 import { MaterialModule } from './material/material.module';
 import { PieceComponent } from './piece/piece.component';
+import { MenuComponent } from './menu/menu.component';
+import { JoinGameComponent } from './join-game/join-game.component';
+import { NewGameComponent } from './new-game/new-game.component';
+import { SocketService } from './socket.service';
+import { NotificationService } from './notification.service';
+import { QrCodeComponent } from './qr-code/qr-code.component';
+import { DividerComponent } from './divider/divider.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BoardComponent,
-    PieceComponent
+    PieceComponent,
+    MenuComponent,
+    JoinGameComponent,
+    NewGameComponent,
+    QrCodeComponent,
+    DividerComponent
   ],
   imports: [
     BrowserModule,
@@ -21,7 +33,7 @@ import { PieceComponent } from './piece/piece.component';
     MaterialModule,
     BaseRouterModule,
   ],
-  providers: [GameService],
+  providers: [NotificationService, GameService, SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
