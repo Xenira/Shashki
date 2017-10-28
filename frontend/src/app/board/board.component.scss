@@ -7,9 +7,22 @@
     align-content: center;
 }
 
+.field:hover {
+    filter: brightness(85%);
+}
+
+mat-grid-tile {
+    background-color: snow;
+}
+
 mat-grid-list {
     flex: 1;
     min-width: 300px;    
     max-width: 66vh;
     padding-bottom: 0 !important;
+}
+
+button {
+    background-color: rgba(136, 226, 32, 0.781);
+    height: 100%;
 }

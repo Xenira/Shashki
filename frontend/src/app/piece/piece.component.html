@@ -1,3 +1,3 @@
-<button mat-button [disabled]="!moves.beats.length">
-  <mat-icon [style.color]="moves.beats.length ? 'red' : (moves.moves.length ? 'green' : 'black')">{{piece.color ? 'lens' : 'panorama_fish_eye'}}</mat-icon>
+<button mat-button [disabled]="!moves.length" (click)="pieceClicked()">
+  <mat-icon [style.color]="moves.length ? 'red' : 'black'">{{piece.color ? 'lens' : 'panorama_fish_eye'}}</mat-icon>
 </button>
