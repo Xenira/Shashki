@@ -14,3 +14,16 @@
 .flex-element {
     flex: 1;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.mat-menu-panel {
+    max-width: unset !important;
+}
+
+.mat-menu-item {
+    text-align: center !important;
+}
