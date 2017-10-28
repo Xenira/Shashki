@@ -1,0 +1,23 @@
+.or-container {
+    text-align: center;
+    
+    .big-gray {
+        color: gray;
+        font-weight: 900;
+        font-size: 200%;
+        width: 100%;
+        position: relative;
+        top: -12px;
+    }
+}
+
+.hr {
+    border-top: solid gray 1px;
+    flex: 3;
+}
+
+:host {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
