@@ -26,6 +26,12 @@ export enum Color {
     DARK,
 }
 
+export enum EndResult {
+    DRAW,
+    VICTORY,
+    DEFEAT
+}
+
 export default class Game {
 
     board: Piece[][];
@@ -207,6 +213,8 @@ export default class Game {
                 }
 
                 beats.push(...beatTargets);
+            } else {
+                break;
             }
 
             if (!isKing) {
