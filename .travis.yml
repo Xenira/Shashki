@@ -20,10 +20,12 @@ jobs:
       install: yarn global add @angular/cli
       script:
         - cd frontend
+        - yarn
         - ng build --prod
     -
       script:
         - cd backend
+        - yarn
         - yarn build
     - stage: test
       script:
