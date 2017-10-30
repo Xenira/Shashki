@@ -2,13 +2,6 @@ language: node_js
 node_js:
   - "8"
 
-stages:
-  - prebuild
-  - build
-  - test
-  - bake
-  - deploy
-
 install:
   - yarn global add @angular/cli
   - cd logic
