@@ -22,7 +22,7 @@ export class GameService {
           data: {
             result: this.game.winner === this.playerColor
               ? EndResult.VICTORY
-              : this.game.winner === null ? EndResult.DRAW : EndResult.DEFEAT;
+              : this.game.winner === null ? EndResult.DRAW : EndResult.DEFEAT
           }
         });
       }
