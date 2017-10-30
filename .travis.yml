@@ -8,12 +8,12 @@ install:
   - yarn
   
 script:
-  - cd frontend
+  - cd ./frontend
   - yarn
   - ng build --prod
   - cd ../backend
   - yarn
   - yarn build
   - cd ..
-  - mkdir backend/dist/public
-  - mv frontend/dist backend/dist/public
+  - mkdir ./backend/dist/public
+  - mv ./frontend/dist ./backend/dist/public
