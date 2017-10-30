@@ -27,3 +27,8 @@ html, body {
 .mat-menu-item {
     text-align: center !important;
 }
+
+mat-dialog-container {
+    max-width: unset !important;
+    margin-right: -1px;
+}

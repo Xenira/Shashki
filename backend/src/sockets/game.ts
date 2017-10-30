@@ -1,5 +1,5 @@
-import Game, { Color, IMove, VALIDATION_RESULT } from 'shashki-logic';
 import * as shortid from 'shortid';
+import Game, { Color, IMove, ValidationResult } from '../../../logic/src/game';
 import { io } from '../index';
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!?');
@@ -64,7 +64,7 @@ export default class GameHandler {
 
         const res = this.game.validate(move);
         switch (res) {
-            case VALIDATION_RESULT.OK:
+            case ValidationResult.OK:
                 this.game.performMove(move);
                 io.to(this.id).emit('move', move);
                 break;

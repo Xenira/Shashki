@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import * as io from 'socket.io-client';
 import { NotificationService } from './notification.service';
 import { Subject } from 'rxjs/Subject';
-import { Color, IMove } from 'shashki-logic';
+import { Color, IMove } from '../../../logic/src/game';
 
 @Injectable()
 export class SocketService {

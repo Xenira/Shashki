@@ -1,8 +1,6 @@
-/// <reference path="../../node_modules/shashki-logic/dist/game.d.ts" />
-
 import { Injectable } from '@angular/core';
-import Game from 'shashki-logic';
-import { Piece, Color, IMove } from 'shashki-logic';
+import Game from '../../../logic/src/game';
+import { Piece, Color, IMove } from '../../../logic/src/game';
 import { SocketService } from './socket.service';
 
 @Injectable()
@@ -14,7 +12,7 @@ export class GameService {
   beats: {[key: string]: boolean} = {};
 
   constructor(private _socket: SocketService) {
-    this._socket.move.subscribe((move) => this.game.performMove(move));    
+    this._socket.move.subscribe((move) => this.game.performMove(move));
   }
 
   getBoard() {
