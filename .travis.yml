@@ -16,8 +16,12 @@ script:
   - yarn
   - yarn build
   - cd ..
-  - mkdir ./backend/dist/public
-  - mv ./frontend/dist ./backend/dist/public
+  - cp -R ./backend/dist ./src
+  - mkdir ./src/public
+  - mv ./frontend/dist ./src/public
+  - rm -rf ./frontend
+  - rm -rf ./backend
+  - rm -rf ./logic
 deploy:
   provider: heroku
   app: shashki
