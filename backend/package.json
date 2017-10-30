@@ -6,7 +6,8 @@
   "scripts": {
     "start": "nodemon --exec \"ts-node ./src/index.ts\" -e ts",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "logic": "cd ../logic/ && yarn build && cd ../frontend/ && yarn add \"file:../logic/\""
+    "logic": "cd ../logic/ && yarn build && cd ../frontend/ && yarn add \"file:../logic/\"",
+    "build": "tsc"
   },
   "author": "Lasse Sprengel",
   "dependencies": {
@@ -18,7 +19,6 @@
     "morgan": "^1.9.0",
     "passport": "^0.4.0",
     "serve-favicon": "^2.4.5",
-    "shashki-logic": "file:../logic",
     "shortid": "^2.2.8",
     "socket.io": "^2.0.4"
   },
