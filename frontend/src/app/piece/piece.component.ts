@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Piece, IMove } from 'shashki-logic';
+import { Piece, IMove } from '../../../../logic/src/game';
 
 @Component({
   selector: 'app-piece',
@@ -19,5 +19,11 @@ export class PieceComponent implements OnInit {
 
   pieceClicked() {
     this.selected.emit(this.moves);
+  }
+
+  getPlayerIcon() {
+    return this.piece.color
+      ? this.piece.king ? 'add_circle' : 'lens'
+      : this.piece.king ? 'add_circle_outline' : 'panorama_fish_eye';
   }
 }
