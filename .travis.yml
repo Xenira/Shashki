@@ -1,0 +1,43 @@
+language: node_js
+node_js:
+  - "8"
+
+stages:
+  - prebuild
+  - build
+  - test
+  - bake
+  - deploy
+
+jobs:
+  include:
+    - stage: prebuild
+      script:
+        - cd /logic
+        - yarn
+        - yarn build
+    - stage: build
+      install: yarn global add @angular/cli
+      script:
+        - cd /frontend
+        - ng build --prod
+    -
+      script:
+        - cd /backend
+        - yarn build
+    - stage: test
+      script:
+        - cd /logic
+        - yarn test
+    - 
+      script:
+        - cd /frontend
+        - ng test
+    - 
+      script:
+        - cd /backend
+        - yarn test
+    - stage: bake
+      script:
+        - mkdir /backend/dist/public
+        - mv /frontend/dist /backend/dist/public
