@@ -1,0 +1,15 @@
+<div class="container-column"
+  [class.draw]="data?.result === 0"
+  [class.won]="data?.result === 1"
+  [class.lost]="data?.result === 2">
+  <h1>{{data?.result === 0 ? 'DRAW' : data?.result === 1 ? 'VICTORY' : 'DEFEAT'}}</h1>
+  <mat-dialog-content>
+    <p>“{{quote}}”</p>
+    {{data?.stats}}
+  </mat-dialog-content>
+  <mat-dialog-actions>
+      <button mat-button (click)="exit()">EXIT</button>
+      <!-- Can optionally provide a result for the closing dialog. -->
+      <button mat-button [mat-dialog-close]="true">REMATCH</button>
+    </mat-dialog-actions>
+</div>
