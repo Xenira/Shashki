@@ -6,9 +6,10 @@ install:
   - yarn global add @angular/cli
   - cd logic
   - yarn
+  - cd ..
   
 script:
-  - cd ../frontend
+  - cd frontend
   - yarn
   - ng build --prod
   - cd ../backend
