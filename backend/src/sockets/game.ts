@@ -12,7 +12,7 @@ interface IPlayer {
 export default class GameHandler {
     public id = shortid.generate();
 
-    private spectators: SocketIO.Socket[];
+    private spectators: SocketIO.Socket[] = [];
     private player2: IPlayer;
     private game = new Game();
 
@@ -33,10 +33,10 @@ export default class GameHandler {
     }
 
     public joinPlayer(player2: SocketIO.Socket) {
-        if (!player2) {
-            this.player2.socket = player2;
+        if (!this.player2) {
+            this.player2 = { socket: player2 };
             this.addListeners(player2);
-            this.player2.socket.join(this.id, this.startGame);
+            return this.player2.socket.join(this.id, () => this.startGame());
         }
 
         player2.emit('game-full');
@@ -55,6 +55,7 @@ export default class GameHandler {
     }
 
     private makeMove(id: string, move: IMove) {
+        console.log(move);
         if (this.player1.socket.id === id && this.game.currentPlayer !== this.player1.color) {
             return this.player1.socket.emit('notification', 'It\'s Player2\'s turn.');
         } else if (this.player2.socket.id === id && this.game.currentPlayer !== this.player2.color) {
@@ -69,13 +70,13 @@ export default class GameHandler {
                 break;
             default:
                 this.player1.socket.id === id
-                    ? this.player1.socket.emit('notification', 'That move is not possible.')
-                    : this.player2.socket.emit('notification', 'That move is not possible.');
+                    ? this.player1.socket.emit('notification', `That move is not possible. (${res})`)
+                    : this.player2.socket.emit('notification', `That move is not possible. (${res})`);
                 break;
         }
     }
 
     private addListeners(socket: SocketIO.Socket) {
-        socket.on('move', this.makeMove);
+        socket.on('move', (move) => this.makeMove(socket.id, move));
     }
 }
