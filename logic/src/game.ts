@@ -226,10 +226,6 @@ export default class Game {
     }
 
     public performMove(move: IMove) {
-        const validation = this.validate(move);
-        if (validation != ValidationResult.OK) {
-            throw new Error(`Invalid move (${validation})`);
-        }
         const piece = this.board[move.fromY][move.fromX];
         this.board[move.fromY][move.fromX] = null;
 
