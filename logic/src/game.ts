@@ -173,21 +173,26 @@ export default class Game {
             } else if (nextPiece.color !== color) {
                 // TODO: Put this into an pitier function
                 let beatTargets: IMove[] = [];
-                for (let j = 2; y + j * yDirection >= 0 && this.board.length > y + j * yDirection &&
+                for (let j = i + 1; y + j * yDirection >= 0 && this.board.length > y + j * yDirection &&
                     x + j * xDirection >= 0 && this.board[y].length > x + j * xDirection; j++) {
                     const xTarget = x + j * xDirection;
                     const yTarget = y + j * yDirection;
+
                     if (!this.board[yTarget][xTarget]) {
-                        const removedPiece = this.board[y + yDirection][x + xDirection];
-                        this.board[y + yDirection][x + xDirection] = null;
+                        const xBeat = x + i * xDirection
+                        const yBeat = y + i * yDirection
+                        const removedPiece = this.board[yBeat][xBeat];
+                        this.board[yBeat][xBeat] = null;
+
                         const becomesKing = (color === Color.LIGHT && yTarget === 0) ||
                             (color === Color.DARK && yTarget === this.board.length - 1);
                         beatTargets.push({
                             fromX: x, fromY: y, toX: xTarget, toY: yTarget,
-                            beatX: x + xDirection, beatY: y + yDirection,
+                            beatX: xBeat, beatY: yBeat,
                             successiveMoves: this.getPossibleMoves(xTarget, yTarget, color, isKing || becomesKing).beats
                         });
-                        this.board[y + yDirection][x + xDirection] = removedPiece;
+
+                        this.board[yBeat][xBeat] = removedPiece;
                     } else {
                         break;
                     }
