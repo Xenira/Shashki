@@ -14,7 +14,7 @@ export class Piece {
     constructor(public color: Color) { }
 }
 
-export enum VALIDATION_RESULT {
+export enum ValidationResult {
     OK,
     INVALID_ORIGIN,
     INVALID_TARGET,
@@ -74,29 +74,31 @@ export default class Game {
         ]
     }
 
-    public validate(move: IMove): VALIDATION_RESULT {
-        if (!move.fromY || this.board.length <= move.fromY ||
-            !move.fromX || this.board[move.fromY].length <= move.fromX) {
-                console.log(move);
-                return VALIDATION_RESULT.INVALID_REQUEST;
+    public validate(move: IMove): ValidationResult {
+        if (!move.hasOwnProperty('fromY') || move.fromY < 0 || this.board.length <= move.fromY ||
+            !move.hasOwnProperty('toY') || move.toY < 0 || this.board.length <= move.toY ||
+            !move.hasOwnProperty('fromX') || move.fromY < 0 || this.board[move.fromY].length <= move.fromX ||
+            !move.hasOwnProperty('toX') || move.toX < 0 || this.board[move.toY].length <= move.toX) {
+            console.log(move);
+            return ValidationResult.INVALID_REQUEST;
         }
         const piece = this.board[move.fromY][move.fromX];
 
         // Validate Origin
         if (!piece) {
-            return VALIDATION_RESULT.INVALID_ORIGIN;
+            return ValidationResult.INVALID_ORIGIN;
         }
 
         // Validate Target
         const targets = this.getPossibleMoves(move.fromX, move.fromY, piece.color, piece.king);
         console.log(move, piece, targets);
         if (targets.beats.length > 0 && targets.beats.some(b => b.toX === move.toX && b.toY === move.toY)) {
-            return VALIDATION_RESULT.OK;
-        } else if (targets.moves.length > 0 && targets.moves.some(m => m.toX === move.toX && m.toY === move.toY)) {
-            return VALIDATION_RESULT.OK;
+            return ValidationResult.OK;
+        } else if (targets.beats.length === 0 && targets.moves.length > 0 && targets.moves.some(m => m.toX === move.toX && m.toY === move.toY)) {
+            return ValidationResult.OK;
         }
 
-        return VALIDATION_RESULT.INVALID_TARGET;
+        return ValidationResult.INVALID_TARGET;
     }
 
     public getPlayerMoves(color: Color) {
@@ -132,16 +134,21 @@ export default class Game {
      * @param isKing check for king moves
      */
     public getPossibleMoves(x: number, y: number, color: Color, isKing = false): { moves: IMove[], beats: IMove[] } {
+        const result = { moves: [], beats: [] };
         const ul = this.checkDirection(x, y, -1, 1, color, isKing);
         const ur = this.checkDirection(x, y, 1, 1, color, isKing);
         const ll = this.checkDirection(x, y, -1, -1, color, isKing);
         const lr = this.checkDirection(x, y, 1, -1, color, isKing);
+        result.beats.push(...ul.beats, ...ur.beats, ...ll.beats, ...lr.beats);
 
-        return {
-            moves: ul.moves.concat(ur.moves, ll.moves, lr.moves),
-            beats: ul.beats.concat(ur.beats, ll.beats, lr.beats),
+        if (color === Color.DARK || isKing) {
+            result.moves.push(...ul.moves, ...ur.moves);
+        }
+        if (color === Color.LIGHT || isKing) {
+            result.moves.push(...ll.moves, ...lr.moves);
         }
 
+        return result;
     }
 
     /**
@@ -168,17 +175,19 @@ export default class Game {
                 let beatTargets: IMove[] = [];
                 for (let j = 2; y + j * yDirection >= 0 && this.board.length > y + j * yDirection &&
                     x + j * xDirection >= 0 && this.board[y].length > x + j * xDirection; j++) {
-                        const xTarget = x + j * xDirection;
-                        const yTarget = y + j * yDirection;
+                    const xTarget = x + j * xDirection;
+                    const yTarget = y + j * yDirection;
                     if (!this.board[yTarget][xTarget]) {
-                        const removedPiece = this.board[yTarget][xTarget];
-                        this.board[yTarget][xTarget] = null;
+                        const removedPiece = this.board[y + yDirection][x + xDirection];
+                        this.board[y + yDirection][x + xDirection] = null;
+                        const becomesKing = (color === Color.LIGHT && yTarget === 0) ||
+                            (color === Color.DARK && yTarget === this.board.length - 1);
                         beatTargets.push({
                             fromX: x, fromY: y, toX: xTarget, toY: yTarget,
                             beatX: x + xDirection, beatY: y + yDirection,
-                            successiveMoves: this.getPossibleMoves(xTarget, yTarget, color, isKing).beats
+                            successiveMoves: this.getPossibleMoves(xTarget, yTarget, color, isKing || becomesKing).beats
                         });
-                        this.board[yTarget][xTarget] = removedPiece;
+                        this.board[y + yDirection][x + xDirection] = removedPiece;
                     } else {
                         break;
                     }
@@ -205,16 +214,22 @@ export default class Game {
 
     public performMove(move: IMove) {
         const validation = this.validate(move);
-        if (validation != VALIDATION_RESULT.OK) {
+        if (validation != ValidationResult.OK) {
             throw new Error(`Invalid move (${validation})`);
         }
         const piece = this.board[move.fromY][move.fromX];
         this.board[move.fromY][move.fromX] = null;
+
+        if ((piece.color === Color.LIGHT && move.toY === 0) ||
+            (piece.color === Color.DARK && move.toY === this.board.length - 1)) {
+                piece.king = true;
+        }
+
         this.board[move.toY][move.toX] = piece;
         if (move.beatX) {
             this.board[move.beatY][move.beatX] = null;
         }
-        if (move.successiveMoves) {
+        if (!move.successiveMoves || move.successiveMoves.length === 0) {
             this.currentPlayer = this.currentPlayer === Color.LIGHT ? Color.DARK : Color.LIGHT;
         }
     }
