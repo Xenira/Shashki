@@ -38,6 +38,8 @@ export default class Game {
     moves: IMove[];
 
     currentPlayer = Color.LIGHT;
+    hasEnded = false;
+    winner: Color;
 
     constructor(game?: { board: Piece[][], moves: IMove[], currentPlayer: Color }) {
         if (game) {
@@ -240,6 +242,13 @@ export default class Game {
         }
         if (!move.successiveMoves || move.successiveMoves.length === 0) {
             this.currentPlayer = this.currentPlayer === Color.LIGHT ? Color.DARK : Color.LIGHT;
+        }
+        if (piece.color !==  this.currentPlayer) {
+            const moves = this.getPlayerMoves(this.currentPlayer);
+            if (moves.beats.length === 0 && moves.moves.length === 0) {
+                this.hasEnded = true;
+                this.winner = piece.color;
+            }
         }
     }
 
