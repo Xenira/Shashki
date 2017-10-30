@@ -1,5 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { MatDialog } from '@angular/material';
 import { GameService } from '../game.service';
 import { Piece, Color, IMove, EndResult } from '../../../../logic/src/game';
 import { SocketService } from '../socket.service';
@@ -20,15 +19,13 @@ export class BoardComponent implements OnInit {
   selectedMoves: IMove[];
   rotated = false;
 
-  constructor(private _game: GameService, private _socket: SocketService, private _dialog: MatDialog) { }
+  constructor(private _game: GameService, private _socket: SocketService) { }
 
   ngOnInit() {
     this.updateMoves();
     this.board = this._game.getBoard();
     this.rotated = !!this._game.playerColor;
     this._socket.move.subscribe((move) => this.updateMoves());
-    this._dialog.open(EndComponent, { disableClose: true, width: '100%',
-      data: { result: EndResult.DRAW, stats: 'Enemys killed: (2) | Enemy Kings killed (1)' }});
   }
 
   getMoves(x: number, y: number) {

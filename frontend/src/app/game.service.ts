@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import Game from '../../../logic/src/game';
-import { Piece, Color, IMove } from '../../../logic/src/game';
+import { Piece, Color, IMove, EndResult } from '../../../logic/src/game';
 import { SocketService } from './socket.service';
+import { MatDialog } from '@angular/material';
+import { EndComponent } from './end/end.component';
 
 @Injectable()
 export class GameService {
@@ -11,8 +13,20 @@ export class GameService {
 
   beats: {[key: string]: boolean} = {};
 
-  constructor(private _socket: SocketService) {
-    this._socket.move.subscribe((move) => this.game.performMove(move));
+  constructor(private _socket: SocketService, private _dialog: MatDialog) {
+    this._socket.move.subscribe((move) => {
+      this.game.performMove(move);
+      if (this.game.hasEnded) {
+        this._dialog.open(EndComponent, {
+          width: '100%',
+          data: {
+            result: this.game.winner === this.playerColor
+              ? EndResult.VICTORY
+              : this.game.winner === null ? EndResult.DRAW : EndResult.DEFEAT;
+          }
+        });
+      }
+    });
   }
 
   getBoard() {

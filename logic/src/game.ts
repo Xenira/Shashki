@@ -39,7 +39,7 @@ export default class Game {
 
     currentPlayer = Color.LIGHT;
     hasEnded = false;
-    winner: Color;
+    winner: Color = null;
 
     constructor(game?: { board: Piece[][], moves: IMove[], currentPlayer: Color }) {
         if (game) {
