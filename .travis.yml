@@ -18,3 +18,8 @@ script:
   - cd ..
   - mkdir ./backend/dist/public
   - mv ./frontend/dist ./backend/dist/public
+deploy:
+  provider: heroku
+  app: shashki
+  api_key:
+    secure: XCEbYZ8iiQQ+UAoTOMlpOvHjh2tcCArCgcA049erE5eoNghEqQkYI6VVQo2PotKamS2N1c$
