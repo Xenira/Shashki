@@ -104,7 +104,8 @@ export default class Game {
         if (this.currentPlayer !== color) {
             return moves;
         }
-        if (this.moves[this.moves.length - 1].successiveMoves) {
+        if (this.moves && this.moves.length > 0 &&
+            this.moves[this.moves.length - 1].successiveMoves) {
             return { moves: [], beats: this.moves[this.moves.length - 1].successiveMoves };
         }
         this.board.forEach((row, y) => {
@@ -210,9 +211,10 @@ export default class Game {
         const piece = this.board[move.fromY][move.fromX];
         this.board[move.fromY][move.fromX] = null;
         this.board[move.toY][move.toX] = piece;
-        if (move.successiveMoves) {
+        if (move.beatX) {
             this.board[move.beatY][move.beatX] = null;
-        } else {
+        }
+        if (move.successiveMoves) {
             this.currentPlayer = this.currentPlayer === Color.LIGHT ? Color.DARK : Color.LIGHT;
         }
     }
