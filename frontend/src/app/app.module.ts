@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { BoardComponent } from './board/board.component';
@@ -15,6 +15,7 @@ import { SocketService } from './socket.service';
 import { NotificationService } from './notification.service';
 import { QrCodeComponent } from './qr-code/qr-code.component';
 import { DividerComponent } from './divider/divider.component';
+import { EndComponent } from './end/end.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DividerComponent } from './divider/divider.component';
     JoinGameComponent,
     NewGameComponent,
     QrCodeComponent,
-    DividerComponent
+    DividerComponent,
+    EndComponent
   ],
   imports: [
     BrowserModule,
@@ -33,6 +35,7 @@ import { DividerComponent } from './divider/divider.component';
     MaterialModule,
     BaseRouterModule,
   ],
+  entryComponents: [EndComponent],
   providers: [NotificationService, GameService, SocketService],
   bootstrap: [AppComponent]
 })
