@@ -17,9 +17,10 @@ script:
   - ls node_modules
   - yarn build
   - cd ..
-  - cp -R ./backend/dist ./src
-  - mkdir ./src/public
-  - mv ./frontend/dist ./src/public
+  - cp -R ./backend/dist ./dist
+  - cp -R ./backend/node_modules ./node_modules
+  - mkdir ./dist/backend/src/public
+  - mv ./frontend/dist ./dist/backend/src/public
   - rm -rf ./frontend
   - rm -rf ./backend
   - rm -rf ./logic

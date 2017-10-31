@@ -1,0 +1,1 @@
+web: node dist/backend/src/index.js
