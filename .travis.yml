@@ -14,7 +14,6 @@ script:
   - ng build --prod
   - cd ../backend
   - yarn
-  - ls node_modules
   - yarn build
   - cd ..
   - cp -R ./backend/dist ./dist
