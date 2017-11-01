@@ -31,3 +31,11 @@ button {
 .rotated {
     transform: rotate(180deg) translateY(100%);
 }
+
+.visited {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    background-color: rgba(93, 131, 189, 0.5);
+}

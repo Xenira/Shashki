@@ -17,6 +17,7 @@ export class BoardComponent implements OnInit {
   board: Piece[][];
   moves: { moves: IMove[], beats: IMove[] } = { moves: [], beats: [] };
   selectedMoves: IMove[];
+  history: IMove[] = [];
   rotated = false;
 
   constructor(private _game: GameService, private _socket: SocketService) { }
@@ -25,7 +26,10 @@ export class BoardComponent implements OnInit {
     this.updateMoves();
     this.board = this._game.getBoard();
     this.rotated = !!this._game.playerColor;
-    this._socket.move.subscribe((move) => this.updateMoves());
+    this._socket.move.subscribe((move) => {
+      this.updateMoves();
+      this.addMoveToHistory(move);
+    });
   }
 
   getMoves(x: number, y: number) {
@@ -49,5 +53,17 @@ export class BoardComponent implements OnInit {
     if (move && move.length > 0) {
       this._game.performMove(move[0]);
     }
+  }
+
+  addMoveToHistory(move: IMove) {
+    if (!move.beatX) {
+      this.history = [];
+    }
+
+    this.history.push(move);
+  }
+
+  isVisited(x: number, y: number) {
+    return this.history.some((m) => m.fromX === x && m.fromY === y);
   }
 }
