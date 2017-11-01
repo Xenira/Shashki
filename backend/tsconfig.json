@@ -2,6 +2,6 @@
     "compilerOptions": {
         "outDir": "dist",
         "moduleResolution": "node",
-        "target": "es6"
+        "target": "es5"
     }
 }

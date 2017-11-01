@@ -17,7 +17,6 @@ script:
 - cp -R ./backend/dist ./dist
 - cp -R ./backend/package.json ./package.json
 - cp -R ./backend/yarn.lock ./yarn.lock
-- yarn --production
 - mkdir ./dist/backend/src/public
 - mv ./frontend/dist ./dist/backend/src/public
 - rm -rf ./frontend
