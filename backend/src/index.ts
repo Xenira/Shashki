@@ -11,19 +11,19 @@ console.log('Starting server');
 const debug = dbg('Backend:server');
 let server;
 
-if (app.get('env') === 'development') {
-    console.log('Using HTTP for dev environment');
-    server = http.createServer(app);
-} else {
-    const options: any = {
-        pfx: fs.readFileSync(__dirname + `/../sslcert/${process.env.CERT_NAME || 'cert.pfx'}`),
-    };
-    if (process.env.CERT_PASSWORD) {
-        options.passphrase = process.env.CERT_PASSWORD;
-    }
+// if (app.get('env') === 'development') {
+// console.log('Using HTTP for dev environment');
+server = http.createServer(app);
+// } else {
+//     const options: any = {
+//         pfx: fs.readFileSync(__dirname + `/../sslcert/${process.env.CERT_NAME || 'cert.pfx'}`),
+//     };
+//     if (process.env.CERT_PASSWORD) {
+//         options.passphrase = process.env.CERT_PASSWORD;
+//     }
 
-    server = https.createServer(options, app);
-}
+//     server = https.createServer(options, app);
+// }
 
 /**
  * Get port from environment and store in Express.
