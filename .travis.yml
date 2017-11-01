@@ -1,30 +1,28 @@
 language: node_js
 node_js:
-  - "8"
-
+- '8'
 install:
-  - yarn global add @angular/cli
-  - cd logic
-  - yarn
-  - cd ..
-  
+- yarn global add @angular/cli
+- cd logic
+- yarn
+- cd ..
 script:
-  - cd frontend
-  - yarn
-  - ng build --prod
-  - cd ../backend
-  - yarn
-  - yarn build
-  - cd ..
-  - cp -R ./backend/dist ./dist
-  - cp -R ./backend/node_modules ./node_modules
-  - mkdir ./dist/backend/src/public
-  - mv ./frontend/dist ./dist/backend/src/public
-  - rm -rf ./frontend
-  - rm -rf ./backend
-  - rm -rf ./logic
+- cd frontend
+- yarn
+- ng build --prod
+- cd ../backend
+- yarn
+- yarn build
+- cd ..
+- cp -R ./backend/dist ./dist
+- cp -R ./backend/node_modules ./node_modules
+- mkdir ./dist/backend/src/public
+- mv ./frontend/dist ./dist/backend/src/public
+- rm -rf ./frontend
+- rm -rf ./backend
+- rm -rf ./logic
 deploy:
   provider: heroku
   app: shashki
   api_key:
-    secure: XCEbYZ8iiQQ+UAoTOMlpOvHjh2tcCArCgcA049erE5eoNghEqQkYI6VVQo2PotKamS2N1c$
+    secure: WHjxYeVs+RHwU6Z4ShYRXPr42H8aoJG/R0s/Bgs/0C2Uuz2pEYX4ZdPUfCyGqPblbN/7g6hTONyr2k4FzwbF4yDvv/1oXlYSlCuP/j6VjiDemKSVI7jdExgCHmApLeCFjyj6TD0Q4knfP67/MeL8GrQtTsl/5P1VqDKPGcFJjz8yo2hFYvkwshd076wAdcQFrXwZl9FVrFEoiJ4UbqB6pRKn2X50T8JbN/nBIKt+XeFWRE9HzYxtc4lehtbw/6id6ZEK1p0K33snd9RZJ79ju1Kkethla4uCJOqLj3QX+u+KzPXE4h22tosJE/TqeOMEEhXLxyipE9bHDFAzagxxYr7f4xNcx6x2zMaeNwlBBC4ZGNJVwC47rDE0wn0wsuZDcjFRx58qQZ60ChlMceSgfs8EadKP+OPGmKLE2yhnZa6dSo6vwP1Y8foaErNyZOHz1rizGyt/gJi0Z/qzBihBIoEIn89of6QtXAxBDZrPS0Hyzev0ro1ZFLsQ3qnsvnXrtw2gLfdKYbeDl2IO+KPPMWhiSjdU06Qz7LvFCIDNpQ+HmszDSGEZapMxFPrvg2ZWpxx04mEir8S6s3w5C7ibRb78VtEV0APWH7mGken+0jY0xiEs5dBMeJzSelR7jSDSrkmbbarevPe2owtG1p4uMMK6yxLe/HiLkEu6FBF6aC0=
