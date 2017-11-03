@@ -3,6 +3,7 @@ import { GameService } from '../game.service';
 import { Piece, Color, IMove, EndResult } from '../../../../logic/src/game';
 import { SocketService } from '../socket.service';
 import { EndComponent } from '../end/end.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -20,7 +21,7 @@ export class BoardComponent implements OnInit {
   history: IMove[] = [];
   rotated = false;
 
-  constructor(private _game: GameService, private _socket: SocketService) { }
+  constructor(private _game: GameService, private _socket: SocketService, private _activeRoute: ActivatedRoute) { }
 
   ngOnInit() {
     this.updateMoves();
@@ -30,6 +31,7 @@ export class BoardComponent implements OnInit {
       this.updateMoves();
       this.addMoveToHistory(move);
     });
+    const visible = this._activeRoute.snapshot.paramMap.get('public') !== 'false';
   }
 
   getMoves(x: number, y: number) {

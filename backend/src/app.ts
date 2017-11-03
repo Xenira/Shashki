@@ -6,11 +6,6 @@ import * as passport from 'passport';
 import * as path from 'path';
 import * as favicon from 'serve-favicon';
 
-// ####################################
-// Import passport and mongoDB inits
-// ####################################
-import './config/passport';
-
 import routerV1 from './routes/api.v1';
 
 const app = express();
@@ -28,7 +23,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(passport.initialize());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/api/v1', routerV1);

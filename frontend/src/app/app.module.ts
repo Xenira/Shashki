@@ -16,6 +16,7 @@ import { NotificationService } from './notification.service';
 import { QrCodeComponent } from './qr-code/qr-code.component';
 import { DividerComponent } from './divider/divider.component';
 import { EndComponent } from './end/end.component';
+import { MoveListComponent } from './move-list/move-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { EndComponent } from './end/end.component';
     NewGameComponent,
     QrCodeComponent,
     DividerComponent,
-    EndComponent
+    EndComponent,
+    MoveListComponent,
   ],
   imports: [
     BrowserModule,

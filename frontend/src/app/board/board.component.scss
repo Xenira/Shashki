@@ -39,3 +39,8 @@ button {
     top: 0;
     background-color: rgba(93, 131, 189, 0.5);
 }
+
+.movelist {
+    display: block;
+    margin-top: calc(((12.5% - 0.875px) + 1px) * 4);
+}

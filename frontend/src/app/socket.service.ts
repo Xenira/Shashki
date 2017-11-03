@@ -3,6 +3,7 @@ import * as io from 'socket.io-client';
 import { NotificationService } from './notification.service';
 import { Subject } from 'rxjs/Subject';
 import { Color, IMove } from '../../../logic/src/game';
+import { environment } from '../environments/environment';
 
 @Injectable()
 export class SocketService {
@@ -25,7 +26,7 @@ export class SocketService {
     if (this.socket) {
       throw new Error('Already connected.');
     }
-    this.socket = io();
+    this.socket = io(environment.socket);
     this.socket.on('notification', (message) => this._notification.showNotification(message));
     this.socket.on('start', (color, id) => this.start.next({ color, id }));
     this.socket.on('gameid', (id) => this.gameid.next(id));

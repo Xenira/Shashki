@@ -36,6 +36,7 @@ export default class Game {
 
     board: Piece[][];
     moves: IMove[];
+    moveTexts: string[] = [];
 
     currentPlayer = Color.LIGHT;
     hasEnded = false;
@@ -237,9 +238,19 @@ export default class Game {
         }
 
         this.board[move.toY][move.toX] = piece;
-        if (move.beatX) {
+        if (move.hasOwnProperty('beatX')) {
             this.board[move.beatY][move.beatX] = null;
         }
+
+        if (this.moveTexts.length % 2 === this.currentPlayer) {
+            this.moveTexts.push(String.fromCharCode(65 + move.fromX) + (this.board.length - move.fromY)
+                + (move.hasOwnProperty('beatX') ? ':' : '-') + String.fromCharCode(65 + move.toX)
+                + (this.board.length - move.toY) );
+        } else {
+            this.moveTexts[this.moveTexts.length - 1] +=
+                `:${String.fromCharCode(65 + move.toX)}${this.board.length - move.toY}`;
+        }
+
         if (!move.successiveMoves || move.successiveMoves.length === 0) {
             this.currentPlayer = this.currentPlayer === Color.LIGHT ? Color.DARK : Color.LIGHT;
         }

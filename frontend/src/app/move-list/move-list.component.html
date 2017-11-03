@@ -1,0 +1,5 @@
+<mat-list *ngFor="let text of moveTexts; let i = index">
+    <mat-list-item>
+      <h4 [style.text-align]="i % 2 === 1 ? 'right' : ''">{{text}}</h4>
+    </mat-list-item>
+</mat-list>
