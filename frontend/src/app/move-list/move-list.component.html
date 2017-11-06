@@ -1,5 +1,24 @@
-<mat-list *ngFor="let text of moveTexts; let i = index">
-    <mat-list-item>
-      <h4 [style.text-align]="i % 2 === 1 ? 'right' : ''">{{text}}</h4>
-    </mat-list-item>
-</mat-list>
+<div class="container-row">
+  <h2>Light</h2>
+  <div class="flex-element container-row">
+    <mat-list class="flex-element margin">
+      <div *ngFor="let text of moveTexts; let i = index">
+        <div *ngIf="moveTexts.length < 8 || i > moveTexts.length - 9">
+          <mat-list-item *ngIf="i % 2 === 0">
+            <h4><b>{{i / 2 + 1}}.</b>    {{text}}</h4>
+          </mat-list-item>
+        </div>
+      </div>
+    </mat-list>
+    <mat-list class="flex-element">
+      <div *ngFor="let text of moveTexts; let i = index">
+        <div *ngIf="moveTexts.length < 8 || i > moveTexts.length - 8">
+          <mat-list-item *ngIf="i % 2 === 1">
+            <h4>{{text}}</h4>
+          </mat-list-item>
+        </div>
+      </div>
+    </mat-list>
+  </div>
+  <h2>Dark</h2>
+</div>
