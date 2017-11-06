@@ -1,0 +1,6 @@
+<div class="container-row">
+  <mat-progress-bar class="flex-element" [color]="player ? 'warn' : 'primary'" 
+    [mode]="_game.game.currentPlayer ? 'determinate' : 'indeterminate'"></mat-progress-bar>
+  <mat-progress-bar class="flex-element" [color]="player ? 'primary' : 'warn'" 
+    [mode]="_game.game.currentPlayer ? 'query' : 'determinate'"></mat-progress-bar>
+</div>

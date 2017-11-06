@@ -54,3 +54,9 @@ button {
 :host {
     height: 100%;
 }
+
+app-player-turn-indicator {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+}

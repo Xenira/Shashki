@@ -17,6 +17,7 @@ import { QrCodeComponent } from './qr-code/qr-code.component';
 import { DividerComponent } from './divider/divider.component';
 import { EndComponent } from './end/end.component';
 import { MoveListComponent } from './move-list/move-list.component';
+import { PlayerTurnIndicatorComponent } from './player-turn-indicator/player-turn-indicator.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { MoveListComponent } from './move-list/move-list.component';
     DividerComponent,
     EndComponent,
     MoveListComponent,
+    PlayerTurnIndicatorComponent,
   ],
   imports: [
     BrowserModule,
