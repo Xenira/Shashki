@@ -10,7 +10,7 @@ export class PlayerTurnIndicatorComponent implements OnInit {
 
   player: number;
 
-  constructor(private _game: GameService) { }
+  constructor(public _game: GameService) { }
 
   ngOnInit() {
     this.player = this._game.playerColor;
