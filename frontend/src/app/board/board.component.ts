@@ -4,6 +4,8 @@ import { Piece, Color, IMove, EndResult } from '../../../../logic/src/game';
 import { SocketService } from '../socket.service';
 import { EndComponent } from '../end/end.component';
 import { ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs/Observable';
+import { DialogService } from '../dialogs/dialog.service';
 
 @Component({
   selector: 'app-board',
@@ -21,7 +23,8 @@ export class BoardComponent implements OnInit {
   history: IMove[] = [];
   rotated = false;
 
-  constructor(private _game: GameService, private _socket: SocketService, private _activeRoute: ActivatedRoute) { }
+  constructor(private _game: GameService, private _socket: SocketService,
+    private _activeRoute: ActivatedRoute, private _dialog: DialogService) { }
 
   ngOnInit() {
     this.updateMoves();
@@ -67,5 +70,13 @@ export class BoardComponent implements OnInit {
 
   isVisited(x: number, y: number) {
     return this.history.some((m) => m.fromX === x && m.fromY === y);
+  }
+
+  canDeactivate():  Observable<boolean> | boolean {
+    if (!this._socket.socket || !this._socket.socket.connected) {
+      return true;
+    }
+
+    return this._dialog.confirm('Exit game?');
   }
 }

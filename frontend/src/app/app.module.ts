@@ -18,6 +18,7 @@ import { DividerComponent } from './divider/divider.component';
 import { EndComponent } from './end/end.component';
 import { MoveListComponent } from './move-list/move-list.component';
 import { PlayerTurnIndicatorComponent } from './player-turn-indicator/player-turn-indicator.component';
+import { DialogsModule } from './dialogs/dialogs.module';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { PlayerTurnIndicatorComponent } from './player-turn-indicator/player-tur
     BrowserAnimationsModule,
     MaterialModule,
     BaseRouterModule,
+    DialogsModule
   ],
   entryComponents: [EndComponent],
   providers: [NotificationService, GameService, SocketService],

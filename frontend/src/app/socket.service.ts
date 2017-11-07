@@ -19,12 +19,14 @@ export class SocketService {
     this.initializeSocket().then(() => {
       this.socket.emit('start', visible);
     }).catch(() => {
+      console.log('Could not connect');
     });
   }
 
   private initializeSocket() {
     if (this.socket) {
-      throw new Error('Already connected.');
+      console.error('Already connected');
+      return;
     }
     this.socket = io(environment.socket);
     this.socket.on('notification', (message) => this._notification.showNotification(message));
