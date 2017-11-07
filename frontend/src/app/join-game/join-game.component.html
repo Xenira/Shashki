@@ -1,3 +1,10 @@
-<p>
-  join-game works!
-</p>
+<div class="container-column outer-container">
+  <h2 *ngIf="id">Trying to join game {{id}}</h2>
+  <mat-progress-spinner *ngIf="id" mode="indeterminate"></mat-progress-spinner>
+  <div *ngIf="!id">
+    <mat-form-field hintLabel="Enter the 9 digit game ID">
+      <input matInput #input maxlength="9" placeholder="Game ID" (keyup)="setId(input.value)">
+      <mat-hint align="end">{{input.value?.length || 0}}/9</mat-hint>
+    </mat-form-field>
+  </div>
+</div>

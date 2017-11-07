@@ -15,6 +15,7 @@ const routes: Routes = [
   },
   { path: 'new/:public', component: NewGameComponent },
   { path: 'join/:id', component: JoinGameComponent },
+  { path: 'join', component: JoinGameComponent },
   { path: '', component: MenuComponent },
 ];
 

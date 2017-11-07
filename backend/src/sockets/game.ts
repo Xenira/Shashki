@@ -2,7 +2,7 @@ import * as shortid from 'shortid';
 import Game, { Color, IMove, ValidationResult } from '../../../logic/src/game';
 import { io } from '../index';
 
-shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!?');
+shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_');
 
 interface IPlayer {
     socket: SocketIO.Socket;
@@ -24,7 +24,7 @@ export default class GameHandler {
     }
 
     public canJoin(): boolean {
-        return !!this.player2;
+        return !this.player2;
     }
 
     public joinSpectator(spectator: SocketIO.Socket) {

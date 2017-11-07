@@ -4,6 +4,7 @@ import { NotificationService } from './notification.service';
 import { Subject } from 'rxjs/Subject';
 import { Color, IMove } from '../../../logic/src/game';
 import { environment } from '../environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class SocketService {
@@ -13,14 +14,18 @@ export class SocketService {
   gameid = new Subject<string>();
   move = new Subject<IMove>();
 
-  constructor(private _notification: NotificationService) { }
+  constructor(private _notification: NotificationService, private _router: Router) { }
 
   newGame(visible: boolean) {
     this.initializeSocket().then(() => {
       this.socket.emit('start', visible);
-    }).catch(() => {
-      console.log('Could not connect');
-    });
+    }).catch((err) => console.error(err));
+  }
+
+  joinGame(id: string) {
+    this.initializeSocket().then(() => {
+      this.socket.emit('join', id);
+    }).catch((err) => console.error(err));
   }
 
   private initializeSocket() {
@@ -33,11 +38,17 @@ export class SocketService {
     this.socket.on('start', (color, id) => this.start.next({ color, id }));
     this.socket.on('gameid', (id) => this.gameid.next(id));
     this.socket.on('move', (move) => this.move.next(move));
+    this.socket.on('disconnect', () => this.disconnected());
 
     return new Promise((resolve, reject) => {
       this.socket.on('connect', resolve);
       setTimeout(reject, 1000);
     });
+  }
+
+  disconnected() {
+    this.socket = null;
+    this._router.navigate(['']);
   }
 
   performMove(move: IMove) {
