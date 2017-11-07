@@ -1,0 +1,17 @@
+:host {
+    flex: 1;
+}
+
+.container-column {
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.outer-container {
+    height: 100%;
+}
+
+app-qr-code {
+    min-width: 150px;
+}

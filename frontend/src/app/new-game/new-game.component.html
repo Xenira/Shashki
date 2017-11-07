@@ -1,10 +1,15 @@
-<h2>Waiting for 2nd player{{points}}</h2>
-<div *ngIf="!visible">
-    This is a private match. Ask a friend to join to begin playing.
-    <hr>
-    Scann this QR code
-    <app-qr-code [text]="'https://shashki.herokuapp.com/join/' + id"></app-qr-code>
-    <app-divider text="OR"></app-divider>
-    <span>Enter the following code to join:</span>
-    <h3>{{id}}</h3>
+<div class="container-column outer-container">
+    <h2>Waiting for 2nd player{{points}}</h2>
+    <div *ngIf="!visible" class="flex-element container-column">
+        <h4>This is a private match. Ask a friend to join to begin playing.</h4>
+        <div class="flex-element container-column">
+            <h2>Scann this QR code</h2>
+            <app-qr-code [text]="'https://shashki.herokuapp.com/join/' + id"></app-qr-code>
+        </div>
+        <app-divider text="OR"></app-divider>
+        <div class="flex-element container-column">
+            <h2>Enter the following code to join:</h2>
+            <h1>{{id}}</h1>
+        </div>
+    </div>
 </div>
