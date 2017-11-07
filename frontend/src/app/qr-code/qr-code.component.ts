@@ -9,15 +9,22 @@ import * as QRious from 'qrious';
 export class QrCodeComponent implements OnInit {
 
   @ViewChild('qr') qr;
-  @Input() text;
+  @Input()
+  set text(text: string) {
+    if (!this.code) {
+      return;
+    }
+    this.code.value = text;
+  }
+
+  private code;
 
   constructor() { }
 
   ngOnInit() {
     console.log(this.qr);
-    const code = new QRious({
+    this.code = new QRious({
       element: this.qr.nativeElement,
-      value: this.text
     });
   }
 
