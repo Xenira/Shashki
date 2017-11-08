@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 })
 export class JoinGameComponent implements OnInit {
 
-  private id: string;
+  public id: string;
   gameStarted = true;
 
   constructor(private _activeRoute: ActivatedRoute, private _router: Router,
