@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SocketService } from '../socket.service';
 import { GameService } from '../game.service';
+import { Observable } from 'rxjs/Observable';
+import { DialogService } from '../dialogs/dialog.service';
 
 @Component({
   selector: 'app-new-game',
@@ -13,9 +15,10 @@ export class NewGameComponent implements OnInit {
   visible: boolean;
   id: string;
   points = '';
+  gameStarted = true;
 
   constructor(private _activeRoute: ActivatedRoute, private _socket: SocketService,
-    private _gameService: GameService, private _router: Router) { }
+    private _gameService: GameService, private _router: Router, private _dialog: DialogService) { }
 
   ngOnInit() {
     this.visible = this._activeRoute.snapshot.paramMap.get('public') !== 'false';
@@ -29,8 +32,30 @@ export class NewGameComponent implements OnInit {
   }
 
   startGame(color, id) {
+    this.gameStarted = true;
     this._gameService.reset(color);
     this._router.navigate(['/game']);
+  }
+
+  canDeactivate(): Observable<boolean> | boolean {
+    if (this.gameStarted) {
+      return true;
+    }
+
+    if (this.visible || !this._socket.socket || !this._socket.disconnected) {
+      this._socket.disconnect();
+      return true;
+    }
+
+    return new Observable<boolean>((subscriber) => {
+      this._dialog.confirm('Close this game instance?').subscribe((result) => {
+        if (result) {
+          // Disconnect socket
+          this._socket.disconnect();
+        }
+        subscriber.next(result);
+      }, (error) => subscriber.error(error));
+    });
   }
 
 }

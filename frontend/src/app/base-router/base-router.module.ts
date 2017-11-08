@@ -8,14 +8,27 @@ import { CanActivateGuard } from './can-activate.guard';
 import { CanDeactivateGuard } from './can-deactivate.guard';
 
 const routes: Routes = [
-  { path: 'game',
+  {
+    path: 'game',
     component: BoardComponent,
     canActivate: [CanActivateGuard],
     canDeactivate: [CanDeactivateGuard]
   },
-  { path: 'new/:public', component: NewGameComponent },
-  { path: 'join/:id', component: JoinGameComponent },
-  { path: 'join', component: JoinGameComponent },
+  {
+    path: 'new/:public', component: NewGameComponent,
+    canActivate: [CanActivateGuard],
+    canDeactivate: [CanDeactivateGuard]
+  },
+  {
+    path: 'join/:id', component: JoinGameComponent,
+    canActivate: [CanActivateGuard],
+    canDeactivate: [CanDeactivateGuard]
+  },
+  {
+    path: 'join', component: JoinGameComponent,
+    canActivate: [CanActivateGuard],
+    canDeactivate: [CanDeactivateGuard]
+  },
   { path: '', component: MenuComponent },
 ];
 

@@ -46,6 +46,12 @@ export class SocketService {
     });
   }
 
+  disconnect() {
+    if (this.socket) {
+      this.socket.disconnect();
+    }
+  }
+
   disconnected() {
     this.socket = null;
     this._router.navigate(['']);

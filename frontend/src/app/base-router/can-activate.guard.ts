@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { BoardComponent } from '../board/board.component';
 import { GameService } from '../game.service';
 import { SocketService } from '../socket.service';
+import { NewGameComponent } from '../new-game/new-game.component';
 
 @Injectable()
 export class CanActivateGuard implements CanActivate {
@@ -13,12 +14,15 @@ export class CanActivateGuard implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    switch (next.component) {
-      case BoardComponent:
-        if (!this._socket.socket || !this._socket.socket.connected) {
-          this._router.navigate(['']);
-          return false;
-        }
+    if (next.component === BoardComponent) {
+      if (!this._socket.socket || !this._socket.socket.connected) {
+        this._router.navigate(['']);
+        return false;
+      }
+    } else {
+      if (!this._socket.socket || !this._socket.socket.connected) {
+        this._socket.disconnect();
+      }
     }
     return true;
   }

@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SocketService } from '../socket.service';
 import { GameService } from '../game.service';
 import { DialogService } from '../dialogs/dialog.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-join-game',
@@ -12,6 +13,7 @@ import { DialogService } from '../dialogs/dialog.service';
 export class JoinGameComponent implements OnInit {
 
   private id: string;
+  gameStarted = true;
 
   constructor(private _activeRoute: ActivatedRoute, private _router: Router,
     private _dialog: DialogService, private _socket: SocketService,
@@ -44,4 +46,7 @@ export class JoinGameComponent implements OnInit {
     this.joinGame(this.id);
   }
 
+  canDeactivate(): Observable<boolean> | boolean {
+    return this.gameStarted || !this._socket.socket || !this._socket.socket.connected;
+  }
 }

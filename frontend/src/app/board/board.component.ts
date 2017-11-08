@@ -72,11 +72,19 @@ export class BoardComponent implements OnInit {
     return this.history.some((m) => m.fromX === x && m.fromY === y);
   }
 
-  canDeactivate():  Observable<boolean> | boolean {
+  canDeactivate(): Observable<boolean> | boolean {
     if (!this._socket.socket || !this._socket.socket.connected) {
       return true;
     }
 
-    return this._dialog.confirm('Exit game?');
+    return new Observable<boolean>((subscriber) => {
+      this._dialog.confirm('Exit game?').subscribe((result) => {
+        if (result) {
+          // Disconnect socket
+          this._socket.disconnect();
+        }
+        subscriber.next(result);
+      }, (error) => subscriber.error(error));
+    });
   }
 }
