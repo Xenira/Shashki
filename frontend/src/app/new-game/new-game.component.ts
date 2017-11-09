@@ -15,7 +15,7 @@ export class NewGameComponent implements OnInit {
   visible: boolean;
   id: string;
   points = '';
-  gameStarted = true;
+  gameStarted = false;
 
   constructor(private _activeRoute: ActivatedRoute, private _socket: SocketService,
     private _gameService: GameService, private _router: Router, private _dialog: DialogService) { }
