@@ -1,0 +1,35 @@
+@import '~@angular/material/theming';
+@include mat-core();
+
+@import './dark-theme';
+@import './light-theme';
+@import './darker-theme.scss';
+
+@import './shashki-theme';
+@include shashki-theme($dark-theme);
+
+// Include the default theme styles.
+
+// Include the alternative theme styles inside of a block with a CSS class. You can make this
+// CSS class whatever you want. In this example, any component inside of an element with
+// `.unicorn-dark-theme` will be affected by this alternate dark theme instead of the default theme.
+.light-theme {
+  @include shashki-theme($light-theme);
+}
+.darker-theme {
+  @include shashki-theme($darker-theme);
+}
+// .light-theme {
+//     $background: #F4F4F4;
+//     $tile: #373737;
+// }
+
+// .dark-theme {
+//     $background: #212121;
+//     $tile: #455A64;
+// }
+
+// .darker-theme {
+//     $background: #000000;
+//     $tile: #373737;
+// }

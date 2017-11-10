@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+@import '../app/app.component-theme';
+@import '../app/board/board-theme';
+@import '../app/piece/piece-theme';
+@import '../app/divider/divider-theme';
+
+@mixin shashki-theme($theme) {
+    @include angular-material-theme($theme);
+    @include app-component-theme($theme);
+    @include board-theme($theme);
+    @include piece-theme($theme);
+    @include divider-theme($theme);
+}

@@ -23,7 +23,7 @@ export class NewGameComponent implements OnInit {
   ngOnInit() {
     this.visible = this._activeRoute.snapshot.paramMap.get('public') !== 'false';
     this._socket.start.subscribe((game) => this.startGame(game.color, game.id));
-    this._socket.gameid.subscribe((id) => this.id = id);
+    this._socket.onGameid.subscribe((id) => this.id = id);
     this._socket.newGame(this.visible);
 
     setInterval(() => {

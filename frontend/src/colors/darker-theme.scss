@@ -1,0 +1,24 @@
+@import '~@angular/material/theming';
+
+$darker-primary: mat-palette($mat-blue-grey, 700, 500, 900);
+$darker-accent:  mat-palette($mat-green);
+$darker-warn:    mat-palette($mat-deep-orange);
+$darker-theme:   mat-dark-theme($darker-primary, $darker-accent, $darker-warn);
+
+$background: (
+    // status-bar: black,
+    // app-bar:    map_get($mat-grey, 900),
+    background: black,
+    // hover:      rgba(white, 0.04), // TODO(kara): check style with Material Design UX
+    card:       #0e0e0e,
+    dialog:     #0e0e0e,
+    // disabled-button: $white-12-opacity,
+    // raised-button: map-get($mat-grey, 800),
+    // focused-button: $white-6-opacity,
+    // selected-button: map_get($mat-grey, 900),
+    // selected-disabled-button: map_get($mat-grey, 800),
+    // disabled-button-toggle: black,
+    // unselected-chip: map_get($mat-grey, 700),
+    // disabled-list-option: black,
+);
+$darker-theme: map-merge($darker-theme, ("background": map-merge(map-get($darker-theme, background), $background)));

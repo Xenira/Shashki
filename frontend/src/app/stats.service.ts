@@ -54,36 +54,40 @@ export class StatsService {
   }
 
   playSound() {
-    this.playSuccessiveKills()
-      .then(() => this.playKillingSpree());
+    setTimeout(() => this.playKillingSpree(), this.playSuccessiveKills() * 1000);
   }
 
-  async playSuccessiveKills(): Promise<void> {
+  playSuccessiveKills(): number {
     switch (Math.max(this.successiveKills, this.enemySuccessiveKills)) {
       case 2:
-        return await doublekill.play();
+        doublekill.play();
+        return doublekill.duration;
       case 3:
-        return await multikill.play();
+        multikill.play();
+        return multikill.duration;
       case 4:
-        return await megakill.play();
+        megakill.play();
+        return megakill.duration;
       case 5:
-        return await ultrakill.play();
+        ultrakill.play();
+        return ultrakill.duration;
       case 6:
-        return await monsterkill.play();
+        monsterkill.play();
+        return monsterkill.duration;
     }
   }
 
   playKillingSpree() {
     switch (Math.max(this.streak, this.enemyStreak)) {
-      case 3:
+      case 4:
         return killingspree.play();
       case 6:
         return rampage.play();
-      case 9:
+      case 8:
         return dominating.play();
-      case 12:
+      case 10:
         return unstoppable.play();
-      case 14:
+      case 12:
         return godlike.play();
     }
   }

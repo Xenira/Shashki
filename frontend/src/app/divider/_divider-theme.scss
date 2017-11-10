@@ -1,0 +1,17 @@
+@import '~@angular/material/theming';
+
+@mixin divider-theme($theme) {
+    $primary: map-get($theme, primary);
+
+    app-divider {
+        .or-container {         
+            .big-gray {
+                color: mat-color($primary);
+            }
+        }
+
+        .hr {
+            border-top: solid  mat-color($primary) 1px;
+        }
+    }
+}

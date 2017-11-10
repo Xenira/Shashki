@@ -6,11 +6,13 @@
         <div *ngIf="isVisited(x, y)" class="visited"></div>
         <app-piece *ngIf="piece" [piece]="piece" [moves]="getMoves(x, y, piece)"
           (selected)="selectedMoves=$event"></app-piece>
-        <button mat-button *ngIf="isHighlighted(x, y)" (click)="move(x, y)"></button>
+        <button class="move-button" mat-button *ngIf="isHighlighted(x, y)" (click)="move(x, y)"></button>
       </mat-grid-tile>
     </div>
   </mat-grid-list>
 </div>
 <div class="grid-spacer"></div>
-<app-move-list class="movelist"></app-move-list>
+<div class="container-row">
+  <app-move-list class="movelist"></app-move-list>
+</div>
 <app-player-turn-indicator></app-player-turn-indicator>

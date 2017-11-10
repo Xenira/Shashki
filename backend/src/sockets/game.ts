@@ -1,6 +1,7 @@
 import * as shortid from 'shortid';
 import Game, { Color, IMove, ValidationResult } from '../../../logic/src/game';
 import { io } from '../index';
+import { removeGame } from './connection';
 
 shortid.characters('0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-_');
 
@@ -17,6 +18,7 @@ export default class GameHandler {
     private game = new Game();
 
     private turnStarted: number;
+    private rematchRequested = false;
 
     constructor(private player1: IPlayer) {
         this.addListeners(player1.socket);
@@ -41,6 +43,19 @@ export default class GameHandler {
 
         player2.emit('game-full');
         player2.disconnect();
+    }
+
+    public disconnected(id: string) {
+        this.game.hasEnded = true;
+        removeGame(this.id);
+
+        if (this.player1.socket.id === id && this.player2 && this.player2.socket) {
+            this.player2.socket.emit('notification', 'Your opponent disconnected.');
+            this.player2.socket.disconnect();
+            return;
+        }
+        this.player1.socket.emit('notification', 'Your opponent disconnected.');
+        this.player1.socket.disconnect();
     }
 
     private startGame() {
@@ -76,7 +91,30 @@ export default class GameHandler {
         }
     }
 
+    private startRematch() {
+        this.player1.color = this.game.winner === this.player1.color ? Color.DARK : Color.LIGHT;
+        this.player2.color = this.player1.color === Color.LIGHT ? Color.DARK : Color.LIGHT;
+        this.player1.socket.emit('start', this.player1.color, this.id);
+        this.player2.socket.emit('start', this.player2.color, this.id);
+        this.game = new Game();
+
+        this.player1.socket.emit('notification', `You are ${this.player1.color === Color.LIGHT ? 'light' : 'dark'}`);
+        this.player2.socket.emit('notification', `You are ${this.player2.color === Color.LIGHT ? 'light' : 'dark'}`);
+        this.spectators.forEach((spec) => spec.emit('notification', 'The game is starting'));
+    }
+
     private addListeners(socket: SocketIO.Socket) {
         socket.on('move', (move) => this.makeMove(socket.id, move));
+        socket.on('rematch', () => {
+            if (!this.game.hasEnded) {
+                return socket.emit('notification', 'Cant request rematch while game is running');
+            }
+            if (this.rematchRequested) {
+                this.rematchRequested = false;
+                this.startRematch();
+            }
+            this.rematchRequested = true;
+        });
     }
+
 }

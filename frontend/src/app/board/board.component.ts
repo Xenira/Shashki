@@ -30,7 +30,7 @@ export class BoardComponent implements OnInit {
     this.updateMoves();
     this.board = this._game.getBoard();
     this.rotated = !!this._game.playerColor;
-    this._socket.move.subscribe((move) => {
+    this._socket.onMove.subscribe((move) => {
       this.updateMoves();
       this.addMoveToHistory(move);
     });

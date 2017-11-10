@@ -1,0 +1,9 @@
+<button mat-icon-button [matMenuTriggerFor]="themeMenu">
+  <mat-icon aria-label="Change theme">format_color_fill</mat-icon>
+</button>
+
+<mat-menu #themeMenu="matMenu">
+  <button *ngFor="let theme of themes" mat-menu-item (click)="setTheme(theme.css)">
+    {{theme.name}}
+  </button>
+</mat-menu>

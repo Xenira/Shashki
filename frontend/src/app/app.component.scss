@@ -1,3 +1,14 @@
 .container-column {
     height: 100%;
 }
+
+h1 {
+    font-size: 200%;
+    padding-top: 16px;
+}
+
+app-theme-button {
+    position: fixed;
+    top: 5px;
+    left: 5px;
+}

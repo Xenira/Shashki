@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Piece, IMove } from '../../../../logic/src/game';
+import { GameService } from '../game.service';
 
 @Component({
   selector: 'app-piece',
@@ -12,7 +13,7 @@ export class PieceComponent implements OnInit {
   @Input() moves: IMove[];
   @Output() selected = new EventEmitter<IMove[]>();
 
-  constructor() { }
+  constructor(private _game: GameService) { }
 
   ngOnInit() {
   }

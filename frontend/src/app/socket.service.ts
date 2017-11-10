@@ -11,8 +11,9 @@ export class SocketService {
 
   socket: SocketIOClient.Socket;
   start = new Subject<{ color: Color, id: string }>();
-  gameid = new Subject<string>();
-  move = new Subject<IMove>();
+  onGameid = new Subject<string>();
+  onDisconnect = new Subject<void>();
+  onMove = new Subject<IMove>();
 
   constructor(private _notification: NotificationService, private _router: Router) { }
 
@@ -36,8 +37,8 @@ export class SocketService {
     this.socket = io(environment.socket);
     this.socket.on('notification', (message) => this._notification.showNotification(message));
     this.socket.on('start', (color, id) => this.start.next({ color, id }));
-    this.socket.on('gameid', (id) => this.gameid.next(id));
-    this.socket.on('move', (move) => this.move.next(move));
+    this.socket.on('gameid', (id) => this.onGameid.next(id));
+    this.socket.on('move', (move) => this.onMove.next(move));
     this.socket.on('disconnect', () => this.disconnected());
 
     return new Promise((resolve, reject) => {
@@ -53,6 +54,7 @@ export class SocketService {
   }
 
   disconnected() {
+    this.onDisconnect.next();
     this.socket = null;
     this._router.navigate(['']);
   }

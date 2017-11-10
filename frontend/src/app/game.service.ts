@@ -16,7 +16,7 @@ export class GameService {
 
   constructor(private _socket: SocketService, private _dialog: MatDialog,
     private _stats: StatsService) {
-    this._socket.move.subscribe((move) => {
+    this._socket.onMove.subscribe((move) => {
       this._stats.performMove(move, this.playerColor, this.game);
       this.game.performMove(move);
       if (this.game.hasEnded) {

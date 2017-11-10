@@ -1,7 +1,3 @@
-.dark {
-    background-color: darkslategray;
-}
-
 .container-row {
     justify-content: center;
     align-content: center;
@@ -9,10 +5,6 @@
 
 .field:hover {
     filter: brightness(85%);
-}
-
-mat-grid-tile {
-    background-color: snow;
 }
 
 mat-grid-list {
@@ -25,11 +17,10 @@ mat-grid-list {
 .grid-spacer {
     min-width: 300px;    
     max-width: 66vh;
-    height: calc(((5.6 * ((12.5% - 0.875px) * 1)) + 0px) + 7px);
+    height: calc(((5.85 * ((12.5% - 0.875px) * 1)) + 0px) + 7px);
 }
 
 button {
-    background-color: rgba(136, 226, 32, 0.781);
     height: 100%;
     width: 100%;
 }
@@ -43,7 +34,6 @@ button {
     height: 100%;
     position: absolute;
     top: 0;
-    background-color: rgba(93, 131, 189, 0.5);
 }
 
 .movelist {
@@ -53,6 +43,10 @@ button {
 
 :host {
     height: 100%;
+}
+
+app-move-list {
+    flex: 1;
 }
 
 app-player-turn-indicator {

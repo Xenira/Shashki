@@ -20,6 +20,7 @@ import { MoveListComponent } from './move-list/move-list.component';
 import { PlayerTurnIndicatorComponent } from './player-turn-indicator/player-turn-indicator.component';
 import { DialogsModule } from './dialogs/dialogs.module';
 import { StatsService } from './stats.service';
+import { ThemeButtonComponent } from './theme-button/theme-button.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { StatsService } from './stats.service';
     EndComponent,
     MoveListComponent,
     PlayerTurnIndicatorComponent,
+    ThemeButtonComponent,
   ],
   imports: [
     BrowserModule,

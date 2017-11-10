@@ -1,0 +1,16 @@
+@import '~@angular/material/theming';
+
+@mixin piece-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+
+    app-piece {
+        .piece {
+            color: mat-color($primary, darker-contrast);
+        }
+    
+        .highlighted {
+            color: mat-color($accent);
+        }
+    }
+}

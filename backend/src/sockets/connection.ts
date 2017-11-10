@@ -6,10 +6,15 @@ io.on('connection', (socket) => {
     const connection = new Connection(socket);
 });
 
-const lobby: SocketIO.Socket[] = [];
+let lobby: GameHandler;
 const games: { [key: string]: GameHandler } = { };
 
+export const removeGame = (key: string) => {
+    delete games[key];
+};
+
 export default class Connection {
+    private game: GameHandler;
     constructor(private socket: SocketIO.Socket) {
         socket.on('disconnect', () => this.onDisconnect());
         socket.on('join', (id) => this.joinGame(id)); // Join game by id
@@ -17,10 +22,8 @@ export default class Connection {
     }
 
     private onDisconnect() {
-        if (lobby.length > 0) {
-            if (this.socket.id === lobby[0].id) {
-                lobby.shift();
-            }
+        if (this.game) {
+            this.game.disconnected(this.socket.id);
         }
         console.log('disconnected');
     }
@@ -37,6 +40,7 @@ export default class Connection {
         }
 
         game.joinPlayer(this.socket);
+        this.game = game;
     }
 
     private startGame(visible: boolean = true) {
@@ -44,16 +48,19 @@ export default class Connection {
             console.log('creating new game');
             const newGame = new GameHandler({ socket: this.socket });
             games[newGame.id] = newGame;
+            this.game = newGame;
             return this.socket.emit('gameid', newGame.id);
         }
 
-        if (lobby.length > 0) {
+        if (lobby) {
             console.log('Joining game');
-            const newGame = new GameHandler({ socket: lobby.shift() });
-            newGame.joinPlayer(this.socket);
-            return games[newGame.id] = newGame;
+            lobby.joinPlayer(this.socket);
+            this.game = lobby;
+            games[lobby.id] = lobby;
+            return lobby = null;
         }
 
-        lobby.push(this.socket);
+        lobby = new GameHandler({ socket: this.socket });
+        this.game = lobby;
     }
 }
