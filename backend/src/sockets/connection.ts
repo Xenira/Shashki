@@ -24,6 +24,9 @@ export default class Connection {
     private onDisconnect() {
         if (this.game) {
             this.game.disconnected(this.socket.id);
+            if (lobby === this.game) {
+                lobby = undefined;
+            }
         }
         console.log('disconnected');
     }
