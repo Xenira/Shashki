@@ -19,6 +19,7 @@ import { EndComponent } from './end/end.component';
 import { MoveListComponent } from './move-list/move-list.component';
 import { PlayerTurnIndicatorComponent } from './player-turn-indicator/player-turn-indicator.component';
 import { DialogsModule } from './dialogs/dialogs.module';
+import { StatsService } from './stats.service';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { DialogsModule } from './dialogs/dialogs.module';
     DialogsModule
   ],
   entryComponents: [EndComponent],
-  providers: [NotificationService, GameService, SocketService],
+  providers: [NotificationService, GameService, SocketService, StatsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

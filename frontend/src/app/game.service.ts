@@ -4,6 +4,7 @@ import { Piece, Color, IMove, EndResult } from '../../../logic/src/game';
 import { SocketService } from './socket.service';
 import { MatDialog } from '@angular/material';
 import { EndComponent } from './end/end.component';
+import { StatsService } from './stats.service';
 
 @Injectable()
 export class GameService {
@@ -11,10 +12,12 @@ export class GameService {
   game = new Game();
   playerColor: Color = Color.LIGHT;
 
-  beats: {[key: string]: boolean} = {};
+  beats: { [key: string]: boolean } = {};
 
-  constructor(private _socket: SocketService, private _dialog: MatDialog) {
+  constructor(private _socket: SocketService, private _dialog: MatDialog,
+    private _stats: StatsService) {
     this._socket.move.subscribe((move) => {
+      this._stats.performMove(move, this.playerColor, this.game);
       this.game.performMove(move);
       if (this.game.hasEnded) {
         this._dialog.open(EndComponent, {
@@ -44,6 +47,7 @@ export class GameService {
   reset(color: Color) {
     this.playerColor = color;
     this.game = new Game();
+    this._stats.reset();
   }
 
   performMove(move: IMove) {
