@@ -1,31 +1,32 @@
 .container-column {
-    height: 25%;
-    width: 100%;
-    align-items: center;
-    color: snow;
-    margin: -24px;
-    padding: 24px;
-
-    h1 {
-        font-size: 300%;
-        font-weight: 500;
-    }
-
-    p {
-        text-align: center;
-        font-weight: 400;
-        font-size: 125%;
-    }
+	height: 25%;
+	width: 100%;
+	align-items: center;
+	color: snow;
+	margin: -24px;
+	padding: 24px;
+	
+	h1 {
+		font-size: 300%;
+		font-weight: 500;
+		color: snow;    
+	}
+	
+	p {
+		text-align: center;
+		font-weight: 400;
+		font-size: 125%;
+	}
 }
 
 .won {
-    background-color: #5BAC4B;
+	background-color: #5BAC4B;
 }
 
 .lost {
-    background-color: #BE3E3E;    
+	background-color: #BE3E3E;    
 }
 
 .draw {
-    background-color: #3E6FBE;    
+	background-color: #3E6FBE;    
 }

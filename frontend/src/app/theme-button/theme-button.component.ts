@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ThemeButtonComponent implements OnInit {
 
   themes: { name: string, icon: string, css?: string }[] = [
-    { name: 'Light', icon: 'brightness_7', css: 'light-theme' },
+    { name: 'Blindingly White', icon: 'brightness_7', css: 'light-theme' },
     { name: 'Dark Theme', icon: 'brightness_5' },
     { name: 'Hello Darkness, My Old Friend', icon: 'brightness_2', css: 'darker-theme' }
   ];
