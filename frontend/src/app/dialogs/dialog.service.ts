@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { Observable } from 'rxjs/Observable';
-import * as adblock from 'adblockdetect';
 import { AdblockDialogComponent } from './adblock-dialog/adblock-dialog.component';
 
 @Injectable()
