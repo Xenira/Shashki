@@ -19,7 +19,9 @@ export class CanActivateGuard implements CanActivate {
         this._router.navigate(['']);
         return false;
       }
+      document.getElementById('github-fork').style.display = 'none';
     } else {
+      document.getElementById('github-fork').style.display = 'unset';
       if (!this._socket.socket || !this._socket.socket.connected) {
         this._socket.disconnect();
       }
