@@ -22,6 +22,7 @@ import { DialogsModule } from './dialogs/dialogs.module';
 import { StatsService } from './stats.service';
 import { ThemeButtonComponent } from './theme-button/theme-button.component';
 import { MuteButtonComponent } from './mute-button/mute-button.component';
+import { AdblockService } from './adblock.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { MuteButtonComponent } from './mute-button/mute-button.component';
     DialogsModule
   ],
   entryComponents: [EndComponent],
-  providers: [NotificationService, GameService, SocketService, StatsService],
+  providers: [NotificationService, GameService, SocketService, StatsService, AdblockService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
