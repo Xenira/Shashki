@@ -13,8 +13,6 @@ export class MoveListComponent implements OnInit {
 
   constructor(private _game: GameService) { }
 
-  ngOnInit() {
-    this.moveTexts = this._game.game.moveTexts;
-  }
+  ngOnInit() { }
 
 }
