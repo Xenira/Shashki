@@ -8,8 +8,7 @@
     {{data?.stats}}
   </mat-dialog-content>
   <mat-dialog-actions>
-      <button mat-button (click)="exit()">EXIT</button>
-      <!-- Can optionally provide a result for the closing dialog. -->
+      <button mat-button mat-dialog-close>EXIT</button>
       <button mat-button [mat-dialog-close]="true" [disabled]="!rematchPossible">REMATCH</button>
     </mat-dialog-actions>
 </div>

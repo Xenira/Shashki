@@ -18,7 +18,7 @@ export default class GameHandler {
     private game = new Game();
 
     private turnStarted: number;
-    private rematchRequested = false;
+    private rematchRequested: string;
 
     constructor(private player1: IPlayer) {
         this.addListeners(player1.socket);
@@ -106,14 +106,20 @@ export default class GameHandler {
     private addListeners(socket: SocketIO.Socket) {
         socket.on('move', (move) => this.makeMove(socket.id, move));
         socket.on('rematch', () => {
+            console.log('rematch ', this.rematchRequested);
             if (!this.game.hasEnded) {
                 return socket.emit('notification', 'Cant request rematch while game is running');
             }
-            if (this.rematchRequested) {
-                this.rematchRequested = false;
+
+            if (!this.rematchRequested) {
+                socket.emit('notification', 'Waiting for opponent...');
+                return this.rematchRequested = socket.id;
+            }
+
+            if (socket.id !== this.rematchRequested) {
+                this.rematchRequested = undefined;
                 this.startRematch();
             }
-            this.rematchRequested = true;
         });
     }
 

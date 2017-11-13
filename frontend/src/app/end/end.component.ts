@@ -33,9 +33,4 @@ export class EndComponent implements OnInit {
     lost.play();
     this.quote = nicejob.not();
   }
-
-  exit() {
-    this.dialogRef.close();
-    this._router.navigate(['/']);
-  }
 }

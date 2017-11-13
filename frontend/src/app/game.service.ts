@@ -5,9 +5,12 @@ import { SocketService } from './socket.service';
 import { MatDialog } from '@angular/material';
 import { EndComponent } from './end/end.component';
 import { StatsService } from './stats.service';
+import { Subject } from 'rxjs/Subject';
 
 @Injectable()
 export class GameService {
+
+  rematch = new Subject<void>();
 
   game = new Game();
   playerColor: Color = Color.LIGHT;
@@ -26,6 +29,16 @@ export class GameService {
             result: this.game.winner === this.playerColor
               ? EndResult.VICTORY
               : this.game.winner === null ? EndResult.DRAW : EndResult.DEFEAT
+          }
+        }).afterClosed().subscribe((rematch) => {
+          if (rematch) {
+            this._socket.start.subscribe(game => {
+              this.reset(game.color);
+              this.rematch.next();
+            });
+            this._socket.rematch();
+          } else {
+            this._socket.disconnect();
           }
         });
       }

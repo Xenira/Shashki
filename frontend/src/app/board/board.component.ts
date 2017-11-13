@@ -27,6 +27,11 @@ export class BoardComponent implements OnInit {
     private _activeRoute: ActivatedRoute, private _dialog: DialogService) { }
 
   ngOnInit() {
+    this._game.rematch.subscribe(() => this.initialize());
+    this.initialize();
+  }
+
+  initialize() {
     this.updateMoves();
     this.board = this._game.getBoard();
     this.rotated = !!this._game.playerColor;

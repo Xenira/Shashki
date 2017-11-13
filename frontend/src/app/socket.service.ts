@@ -63,4 +63,8 @@ export class SocketService {
     this.socket.emit('move', move);
   }
 
+  rematch() {
+    this.socket.emit('rematch');
+  }
+
 }
