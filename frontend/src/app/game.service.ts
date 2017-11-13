@@ -23,6 +23,7 @@ export class GameService {
       this._stats.performMove(move, this.playerColor, this.game);
       this.game.performMove(move);
       if (this.game.hasEnded) {
+        this._stats.gameEnded(this.game.winner === this.playerColor);
         this._dialog.open(EndComponent, {
           width: '100%',
           data: {

@@ -7,9 +7,6 @@ import * as nicejob from 'nicejob';
 import * as moment from 'moment';
 import { SocketService } from '../socket.service';
 
-const win = new Audio('../../assets/streaks/winner.wav');
-const lost = new Audio('../../assets/streaks/lostmatch.wav');
-
 @Component({
   templateUrl: './end.component.html',
   styleUrls: ['./end.component.scss']
@@ -27,10 +24,8 @@ export class EndComponent implements OnInit {
   ngOnInit() {
     this._socket.onDisconnect.subscribe(() => this.rematchPossible = false);
     if (this.data.result === EndResult.VICTORY) {
-      win.play();
       return this.quote = nicejob();
     }
-    lost.play();
     this.quote = nicejob.not();
   }
 }

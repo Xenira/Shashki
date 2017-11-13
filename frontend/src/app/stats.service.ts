@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import Game, { IMove, Color } from '../../../logic/src/game';
 import { GameService } from './game.service';
+import { Subject } from 'rxjs/Subject';
 
 const firstblood = new Audio('/assets/streaks/firstblood.wav');
 const doublekill = new Audio('/assets/streaks/doublekill.wav');
@@ -15,6 +16,9 @@ const dominating = new Audio('/assets/streaks/dominating.wav');
 const unstoppable = new Audio('/assets/streaks/unstoppable.wav');
 const godlike = new Audio('/assets/streaks/godlike.wav');
 
+const win = new Audio('../../assets/streaks/winner.wav');
+const lost = new Audio('../../assets/streaks/lostmatch.wav');
+
 @Injectable()
 export class StatsService {
 
@@ -25,6 +29,8 @@ export class StatsService {
   successiveKills = 0;
   enemyStreak = 0;
   enemySuccessiveKills = 0;
+
+  playbackEnd: Promise<void>;
 
   constructor() { }
 
@@ -60,7 +66,11 @@ export class StatsService {
   }
 
   playSound() {
-    setTimeout(() => this.playKillingSpree(), this.playSuccessiveKills() * 1000);
+    this.playbackEnd = new Promise<void>((resolve, reject) => {
+      setTimeout(() => setTimeout(() => resolve(),
+        this.playKillingSpree() * 1000),
+        this.playSuccessiveKills() * 1000);
+    })
   }
 
   playSuccessiveKills(): number {
@@ -81,20 +91,39 @@ export class StatsService {
         monsterkill.play();
         return monsterkill.duration;
     }
+    return 0;
   }
 
   playKillingSpree() {
     switch (Math.max(this.streak, this.enemyStreak)) {
       case 4:
-        return killingspree.play();
+        killingspree.play();
+        return killingspree.duration;
       case 6:
-        return rampage.play();
+        rampage.play();
+        return rampage.duration;
       case 8:
-        return dominating.play();
+        dominating.play();
+        return dominating.duration;
       case 10:
-        return unstoppable.play();
+        unstoppable.play();
+        return unstoppable.duration;
       case 12:
-        return godlike.play();
+        godlike.play();
+        return godlike.duration;
+    }
+    return 0;
+  }
+
+  gameEnded(winner: boolean) {
+    if (!this.muted) {
+      this.playbackEnd.then(() => {
+        if (winner) {
+          win.play();
+        } else {
+          lost.play();
+        }
+      });
     }
   }
 
