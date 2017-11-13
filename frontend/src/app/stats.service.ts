@@ -18,6 +18,8 @@ const godlike = new Audio('/assets/streaks/godlike.wav');
 @Injectable()
 export class StatsService {
 
+  muted = false;
+
   firstBlood = false;
   streak = 0;
   successiveKills = 0;
@@ -36,7 +38,9 @@ export class StatsService {
     if (move.hasOwnProperty('beatX')) {
       if (!this.firstBlood) {
         this.firstBlood = true;
-        firstblood.play();
+        if (!this.muted) {
+          firstblood.play();
+        }
       }
 
       if (game.currentPlayer === playerColor) {
@@ -49,7 +53,9 @@ export class StatsService {
         this.streak = 0;
       }
 
-      this.playSound();
+      if (!this.muted) {
+        this.playSound();
+      }
     }
   }
 

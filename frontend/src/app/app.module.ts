@@ -21,6 +21,7 @@ import { PlayerTurnIndicatorComponent } from './player-turn-indicator/player-tur
 import { DialogsModule } from './dialogs/dialogs.module';
 import { StatsService } from './stats.service';
 import { ThemeButtonComponent } from './theme-button/theme-button.component';
+import { MuteButtonComponent } from './mute-button/mute-button.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ThemeButtonComponent } from './theme-button/theme-button.component';
     MoveListComponent,
     PlayerTurnIndicatorComponent,
     ThemeButtonComponent,
+    MuteButtonComponent,
   ],
   imports: [
     BrowserModule,
