@@ -11,7 +11,7 @@ export class MoveListComponent implements OnInit {
 
   moveTexts: string[];
 
-  constructor(private _game: GameService) { }
+  constructor(public _game: GameService) { }
 
   ngOnInit() { }
 
