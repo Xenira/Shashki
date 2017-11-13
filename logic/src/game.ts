@@ -216,6 +216,7 @@ export default class Game {
                 }
 
                 beats.push(...beatTargets);
+                break;
             } else {
                 break;
             }
