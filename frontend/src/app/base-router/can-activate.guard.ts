@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { BoardComponent } from '../board/board.component';
-import { GameService } from '../game.service';
 import { SocketService } from '../socket.service';
-import { NewGameComponent } from '../new-game/new-game.component';
 
 @Injectable()
 export class CanActivateGuard implements CanActivate {

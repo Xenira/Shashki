@@ -4,6 +4,7 @@ import { SocketService } from '../socket.service';
 import { GameService } from '../game.service';
 import { DialogService } from '../dialogs/dialog.service';
 import { Observable } from 'rxjs/Observable';
+import { Color } from '../../../../logic/src/game';
 
 @Component({
   selector: 'app-join-game',
@@ -21,7 +22,7 @@ export class JoinGameComponent implements OnInit {
 
   ngOnInit() {
     this.id = this._activeRoute.snapshot.paramMap.get('id');
-    this._socket.start.subscribe((game) => this.startGame(game.color, game.id));
+    this._socket.onStart.subscribe((game) => this.startGame(game.color, game.id));
     if (this.id) {
       this.joinGame(this.id);
     }
@@ -32,7 +33,7 @@ export class JoinGameComponent implements OnInit {
     this._socket.joinGame(this.id);
   }
 
-  startGame(color, id) {
+  startGame(color: Color, id: string) {
     this._gameService.reset(color);
     this._router.navigate(['/game']);
   }

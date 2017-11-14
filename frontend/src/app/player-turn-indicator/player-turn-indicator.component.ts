@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from '../game.service';
+import { Color } from '../../../../logic/src/game';
 
 @Component({
   selector: 'app-player-turn-indicator',
@@ -8,7 +9,7 @@ import { GameService } from '../game.service';
 })
 export class PlayerTurnIndicatorComponent implements OnInit {
 
-  player: number;
+  player: Color;
 
   constructor(public _game: GameService) { }
 

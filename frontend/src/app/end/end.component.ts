@@ -1,11 +1,16 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 import { Router } from '@angular/router';
-import { EndResult } from '../../../../logic/src/game';
 
 import * as nicejob from 'nicejob';
 import * as moment from 'moment';
 import { SocketService } from '../socket.service';
+
+export enum EndResult {
+  DRAW,
+  VICTORY,
+  DEFEAT
+}
 
 @Component({
   templateUrl: './end.component.html',

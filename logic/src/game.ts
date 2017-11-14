@@ -7,6 +7,7 @@ export interface IMove {
     beatY?: number;
     successiveMoves?: IMove[]
 }
+export interface IMoveResult { moves: IMove[], beats: IMove[] }
 
 export class Piece {
     king = false;
@@ -26,14 +27,7 @@ export enum Color {
     DARK,
 }
 
-export enum EndResult {
-    DRAW,
-    VICTORY,
-    DEFEAT
-}
-
 export default class Game {
-
     board: Piece[][];
     moves: IMove[];
     moveTexts: string[] = [];
@@ -99,7 +93,7 @@ export default class Game {
         }
 
         // Validate Target
-        const targets = this.getPossibleMoves(move.fromX, move.fromY, piece.color, piece.king);
+        const targets = this.getPossibleMoves(move.fromX, move.fromY, piece);
         console.log(move, piece, targets);
         if (targets.beats.length > 0 && targets.beats.some(b => b.toX === move.toX && b.toY === move.toY)) {
             return ValidationResult.OK;
@@ -110,8 +104,8 @@ export default class Game {
         return ValidationResult.INVALID_TARGET;
     }
 
-    public getPlayerMoves(color: Color) {
-        const moves: { moves: IMove[], beats: IMove[] } = { moves: [], beats: [] };
+    public getPlayerMoves(color: Color): IMoveResult {
+        const moves: IMoveResult = { moves: [], beats: [] };
         if (this.currentPlayer !== color) {
             return moves;
         }
@@ -123,7 +117,7 @@ export default class Game {
             const results = row
                 .map((piece, x) => {
                     return (piece && piece.color === color) &&
-                        this.getPossibleMoves(x, y, color, piece.king);
+                        this.getPossibleMoves(x, y, piece);
                 })
                 .filter(moves => moves)
             results.forEach((r) => {
@@ -142,18 +136,18 @@ export default class Game {
      * @param color color to check
      * @param isKing check for king moves
      */
-    public getPossibleMoves(x: number, y: number, color: Color, isKing = false): { moves: IMove[], beats: IMove[] } {
+    public getPossibleMoves(x: number, y: number, piece: Piece): IMoveResult {
         const result = { moves: [], beats: [] };
-        const ul = this.checkDirection(x, y, -1, 1, color, isKing);
-        const ur = this.checkDirection(x, y, 1, 1, color, isKing);
-        const ll = this.checkDirection(x, y, -1, -1, color, isKing);
-        const lr = this.checkDirection(x, y, 1, -1, color, isKing);
+        const ul = this.checkDirection(x, y, -1, 1, piece);
+        const ur = this.checkDirection(x, y, 1, 1, piece);
+        const ll = this.checkDirection(x, y, -1, -1, piece);
+        const lr = this.checkDirection(x, y, 1, -1, piece);
         result.beats.push(...ul.beats, ...ur.beats, ...ll.beats, ...lr.beats);
 
-        if (color === Color.DARK || isKing) {
+        if (piece.color === Color.DARK || piece.king) {
             result.moves.push(...ul.moves, ...ur.moves);
         }
-        if (color === Color.LIGHT || isKing) {
+        if (piece.color === Color.LIGHT || piece.king) {
             result.moves.push(...ll.moves, ...lr.moves);
         }
 
@@ -169,8 +163,7 @@ export default class Game {
      * @param color color to check
      * @param isKing check for king moves
      */
-    private checkDirection(x: number, y: number, xDirection: number, yDirection: number,
-        color: Color, isKing = false) {
+    private checkDirection(x: number, y: number, xDirection: number, yDirection: number, piece: Piece) {
         const moves: IMove[] = [], beats: IMove[] = [];
 
         for (let i = 1; y + i * yDirection >= 0 && this.board.length > y + i * yDirection &&
@@ -179,38 +172,9 @@ export default class Game {
 
             if (!nextPiece) {
                 moves.push({ fromX: x, fromY: y, toX: x + i * xDirection, toY: y + i * yDirection });
-            } else if (nextPiece.color !== color) {
-                // TODO: Put this into an pitier function
-                let beatTargets: IMove[] = [];
-                for (let j = i + 1; y + j * yDirection >= 0 && this.board.length > y + j * yDirection &&
-                    x + j * xDirection >= 0 && this.board[y].length > x + j * xDirection; j++) {
-                    const xTarget = x + j * xDirection;
-                    const yTarget = y + j * yDirection;
-
-                    if (!this.board[yTarget][xTarget]) {
-                        const xBeat = x + i * xDirection
-                        const yBeat = y + i * yDirection
-                        const removedPiece = this.board[yBeat][xBeat];
-                        this.board[yBeat][xBeat] = null;
-
-                        const becomesKing = (color === Color.LIGHT && yTarget === 0) ||
-                            (color === Color.DARK && yTarget === this.board.length - 1);
-                        beatTargets.push({
-                            fromX: x, fromY: y, toX: xTarget, toY: yTarget,
-                            beatX: xBeat, beatY: yBeat,
-                            successiveMoves: this.getPossibleMoves(xTarget, yTarget, color, isKing || becomesKing).beats
-                        });
-
-                        this.board[yBeat][xBeat] = removedPiece;
-                    } else {
-                        break;
-                    }
-
-                    if (!isKing) {
-                        break;
-                    }
-                }
-
+            } else if (nextPiece.color !== piece.color) {
+                let beatTargets: IMove[] = this.getBeatTargets(x, y, xDirection, yDirection, i, piece);
+                
                 if (beatTargets.some((t) => t.successiveMoves.length > 0)) {
                     beatTargets = beatTargets.filter((t) => t.successiveMoves.length > 0);
                 }
@@ -221,12 +185,47 @@ export default class Game {
                 break;
             }
 
-            if (!isKing) {
+            if (!piece.king) {
                 break;
             }
         }
 
         return { moves, beats };
+    }
+
+    getBeatTargets(x, y, xDirection, yDirection, offset, piece: Piece): IMove[] {
+        const beatTargets = [];
+        for (let j = offset + 1; y + j * yDirection >= 0 && this.board.length > y + j * yDirection &&
+            x + j * xDirection >= 0 && this.board[y].length > x + j * xDirection; j++) {
+            const xTarget = x + j * xDirection;
+            const yTarget = y + j * yDirection;
+
+            if (!this.board[yTarget][xTarget]) {
+                const xBeat = x + offset * xDirection
+                const yBeat = y + offset * yDirection
+                const removedPiece = this.board[yBeat][xBeat];
+                this.board[yBeat][xBeat] = null;
+
+                const becomesKing = (piece.color === Color.LIGHT && yTarget === 0) ||
+                    (piece.color === Color.DARK && yTarget === this.board.length - 1);
+                beatTargets.push({
+                    fromX: x, fromY: y, toX: xTarget, toY: yTarget,
+                    beatX: xBeat, beatY: yBeat,
+                    successiveMoves: this.getPossibleMoves(xTarget, yTarget, { color: piece.color,
+                        king: piece.king || becomesKing }).beats
+                });
+
+                this.board[yBeat][xBeat] = removedPiece;
+            } else {
+                break;
+            }
+
+            if (!piece.king) {
+                break;
+            }
+        }
+
+        return beatTargets;
     }
 
     public performMove(move: IMove) {

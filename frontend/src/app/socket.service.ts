@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 export class SocketService {
 
   socket: SocketIOClient.Socket;
-  start = new Subject<{ color: Color, id: string }>();
+  onStart = new Subject<{ color: Color, id: string }>();
   onGameid = new Subject<string>();
   onDisconnect = new Subject<void>();
   onMove = new Subject<IMove>();
@@ -36,7 +36,7 @@ export class SocketService {
     }
     this.socket = io(environment.socket);
     this.socket.on('notification', (message) => this._notification.showNotification(message));
-    this.socket.on('start', (color, id) => this.start.next({ color, id }));
+    this.socket.on('start', (color, id) => this.onStart.next({ color, id }));
     this.socket.on('gameid', (id) => this.onGameid.next(id));
     this.socket.on('move', (move) => this.onMove.next(move));
     this.socket.on('disconnect', () => this.disconnected());

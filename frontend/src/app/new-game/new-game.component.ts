@@ -4,6 +4,7 @@ import { SocketService } from '../socket.service';
 import { GameService } from '../game.service';
 import { Observable } from 'rxjs/Observable';
 import { DialogService } from '../dialogs/dialog.service';
+import { Color } from '../../../../logic/src/game';
 
 @Component({
   selector: 'app-new-game',
@@ -22,7 +23,7 @@ export class NewGameComponent implements OnInit {
 
   ngOnInit() {
     this.visible = this._activeRoute.snapshot.paramMap.get('public') !== 'false';
-    this._socket.start.subscribe((game) => this.startGame(game.color, game.id));
+    this._socket.onStart.subscribe((game) => this.startGame(game.color, game.id));
     this._socket.onGameid.subscribe((id) => this.id = id);
     this._socket.newGame(this.visible);
 
@@ -31,7 +32,7 @@ export class NewGameComponent implements OnInit {
     }, 1500);
   }
 
-  startGame(color, id) {
+  startGame(color: Color, id: string) {
     this.gameStarted = true;
     this._gameService.reset(color);
     this._router.navigate(['/game']);

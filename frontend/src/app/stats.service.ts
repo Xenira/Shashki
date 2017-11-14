@@ -70,7 +70,7 @@ export class StatsService {
       setTimeout(() => setTimeout(() => resolve(),
         this.playKillingSpree() * 1000),
         this.playSuccessiveKills() * 1000);
-    })
+    });
   }
 
   playSuccessiveKills(): number {

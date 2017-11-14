@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="125cm" height="109cm" viewBox="-781 -5 2493 2162" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="94" y="17" width="943" height="497"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="94" y="17" width="943" height="497"/>
+    <rect style="fill: #ffffff" x="94" y="-3" width="104.1" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="94" y="-3" width="104.1" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="96" y="11">shashki-logic</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="178" y="270" width="156.3" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="178" y="270" width="156.3" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="256.15" y="288">Piece</text>
+    <rect style="fill: #ffffff" x="178" y="298" width="156.3" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="178" y="298" width="156.3" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="181" y="310.4">+king: bool = false</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="181" y="326.4">+color: Color</text>
+    <rect style="fill: #ffffff" x="178" y="334" width="156.3" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="178" y="334" width="156.3" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="463" y="163" width="479.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="463" y="163" width="479.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="702.85" y="181">Game</text>
+    <rect style="fill: #ffffff" x="463" y="191" width="479.7" height="100"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="463" y="191" width="479.7" height="100"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="203.4">+board: Piece[][]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="219.4">+moves: IMove[]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="235.4">+moveTexts: string[] = []</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="251.4">+currentPlayer: Color = 0</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="267.4">+hasEnded: boolean = false</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="283.4">+winner: Color</text>
+    <rect style="fill: #ffffff" x="463" y="291" width="479.7" height="212"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="463" y="291" width="479.7" height="212"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="303.4">+constructor(game?:{ board: Piece[][], moves: IMove[],</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="319.4">              currentPlayer: Color })</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="335.4">+init()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="351.4">+validate(move:IMove): ValidationResult</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="367.4">+getPlayerMoves(color:Color): IMoveResult</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="383.4">+getPossibleMoves(x:number,y:number,piece:Piece): IMoveResult</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="399.4">-checkDirection(x:number,y:number,xDirection:number,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="415.4">                yDirection:number,piece:Piece): IMoveResult</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="431.4">+getBeatTargets(x:number,y:number,xDirection:number,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="447.4">                yDirection:number,offset:number,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="463.4">                piece:Piece): IMove[]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="479.4">+performMove(move:IMove)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="466" y="495.4">+calculateState(moves:IMove[])</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-779.25" y="564.5" width="1394.25" height="1592"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-779.25" y="564.5" width="1394.25" height="1592"/>
+    <rect style="fill: #ffffff" x="-779.25" y="544.5" width="65.6" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-779.25" y="544.5" width="65.6" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-777.25" y="558.5">frontend</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="192" y="600.5" width="371.9" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="192" y="600.5" width="371.9" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="377.95" y="618.5">BoardComponent</text>
+    <rect style="fill: #ffffff" x="192" y="628.5" width="371.9" height="68"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="192" y="628.5" width="371.9" height="68"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="640.9">-_game: GameService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="656.9">-_socket: SocketService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="672.9">-_activeRoute: ActivatedRoute</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="688.9">+_dialog: DialogService</text>
+    <rect style="fill: #ffffff" x="192" y="696.5" width="371.9" height="148"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="192" y="696.5" width="371.9" height="148"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="708.9">+ngOnInit()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="724.9">+initialize()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="740.9">+getMoves(x:number,y:number,piece:Piece)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="756.9">+updateMoves()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="772.9">+isHighlighted(): boolean</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="788.9">+move(x:number,y:number)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="804.9">+addMoveToHistory(move:IMove)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="820.9">+isVisited(x:number,y:number): boolean</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="195" y="836.9">+canDeactivate(): Observable&lt;boolean&gt; | boolean</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="175" y="904" width="256.4" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="175" y="904" width="256.4" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="303.2" y="922">PieceComponent</text>
+    <rect style="fill: #ffffff" x="175" y="932" width="256.4" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="175" y="932" width="256.4" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="178" y="944.4">+piece: Piece</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="178" y="960.4">+moves: IMove[]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="178" y="976.4">+selected: EventEmitter&lt;IMove[]&gt;</text>
+    <rect style="fill: #ffffff" x="175" y="984" width="256.4" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="175" y="984" width="256.4" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="178" y="996.4">+pieceClicked()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="178" y="1012.4">+getPlayerIcon()</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="377.95,869.672 377.95,881.25 303.2,881.25 303.2,904 "/>
+    <polygon style="fill: #000000" points="377.95,844.5 382.75,858.5 377.95,872.5 373.15,858.5 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="377.95,844.5 382.75,858.5 377.95,872.5 373.15,858.5 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="340.575" y="877.25"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="388.95" y="855.5">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="307.2" y="899">1..16</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="114" y="1079" width="418.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="114" y="1079" width="418.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="323.05" y="1097">GameService</text>
+    <rect style="fill: #ffffff" x="114" y="1107" width="418.1" height="116"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="114" y="1107" width="418.1" height="116"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1119.4">+rematch: Subject&lt;void&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1135.4">+playerColor: Color</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1151.4">+game: Game = Color.LIGHT</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1167.4">+beats: { [key: string]: boolean }</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1183.4">-_socket: SocketService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1199.4">-_dialog: MatDialog</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1215.4">-_stats: StatsService</text>
+    <rect style="fill: #ffffff" x="114" y="1223" width="418.1" height="84"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="114" y="1223" width="418.1" height="84"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1235.4">+getBoard(): Piece[][]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1251.4">+getMoves(x:number,y:number,piece:Piece): IMoveResult</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1267.4">+isMyTurn(): boolean</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1283.4">+reset(color:Color)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="117" y="1299.4">+performMove(move:IMove)</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="303.2,1020 303.2,1016.75 323.05,1016.75 323.05,1079 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="313.125" y="1012.75"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="307.2" y="1015">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="327.05" y="1074">1</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="701" y="565" width="1010.38" height="690.75"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="701" y="565" width="1010.38" height="690.75"/>
+    <rect style="fill: #ffffff" x="701" y="545" width="57.9" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="701" y="545" width="57.9" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="703" y="559">service</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="809.25" y="990" width="256.4" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="809.25" y="990" width="256.4" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="937.45" y="1008">Connection</text>
+    <rect style="fill: #ffffff" x="809.25" y="1018" width="256.4" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="809.25" y="1018" width="256.4" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="812.25" y="1030.4">+game: GameHandler</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="812.25" y="1046.4">+socket: SocketIO.Socket</text>
+    <rect style="fill: #ffffff" x="809.25" y="1054" width="256.4" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="809.25" y="1054" width="256.4" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="812.25" y="1066.4">-onDisconnect()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="812.25" y="1082.4">-joinGame(id:string)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="812.25" y="1098.4">-startGame(visible:boolean=true)</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="775.25" y="623" width="325.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="775.25" y="623" width="325.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="938.1" y="641">GameHandler</text>
+    <rect style="fill: #ffffff" x="775.25" y="651" width="325.7" height="84"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="775.25" y="651" width="325.7" height="84"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="663.4">+id: string = shortid.generate()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="679.4">-spectators: SocketIO.Socket[] = []</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="695.4">-player1: IPlayer</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="711.4">-player2: IPlayer</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="727.4">-rematchRequested: string</text>
+    <rect style="fill: #ffffff" x="775.25" y="735" width="325.7" height="132"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="775.25" y="735" width="325.7" height="132"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="747.4">+canJoin(): boolean</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="763.4">+joinSpectator(spectator:SocketIO.Socket)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="779.4">+joinPlayer(player2:SocketIO.Socket)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="795.4">+disconnected(id:string)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="811.4">-startGame()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="827.4">-makeMove(id:string,move:IMove)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="843.4">-startRematch()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="778.25" y="859.4">-addListeners(socket:SocketIO.Socket)</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="561.975,1890.75 685.613,1890.75 685.613,1064 809.25,1064 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="687.613" y="1473.38"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="565.975" y="1886.75">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="805.25" y="1060">1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="589.072,614.5 584.9,614.5 584.9,1093 532.1,1093 "/>
+    <polygon style="fill: #ffffff" points="563.9,614.5 577.9,609.7 591.9,614.5 577.9,619.3 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="563.9,614.5 577.9,609.7 591.9,614.5 577.9,619.3 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="586.9" y="849.75"/>
+    <polygon style="fill: #000000" points="588.9,849.75 588.9,841.75 596.9,845.75 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="595.9" y="610.5">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="536.1" y="1089">1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="437.828,365 391.65,365 391.65,308 334.3,308 "/>
+    <polygon style="fill: #000000" points="463,365 449,369.8 435,365 449,360.2 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="463,365 449,369.8 435,365 449,360.2 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="393.65" y="332.5"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="431" y="361">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="338.3" y="304">1..16</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="938.1,867 938.1,935.5 937.45,935.5 937.45,964.828 "/>
+    <polygon style="fill: #ffffff" points="937.45,990 932.65,976 937.45,962 942.25,976 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="937.45,990 932.65,976 937.45,962 942.25,976 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="937.775" y="931.5"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="942.1" y="878">0..*</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="948.45" y="985">1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="702.85,503 702.85,1133 532.1,1133 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="617.475" y="1129"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="706.85" y="514">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="536.1" y="1129">1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="942.7,397 963.7,397 963.7,509.5 938.1,509.5 938.1,623 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="950.9" y="505.5"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="946.7" y="393"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="942.1" y="618"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="179" y="400" width="87" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="179" y="400" width="87" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="222.5" y="414.4">&lt;&lt;enum&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="222.5" y="434">Color</text>
+    <rect style="fill: #ffffff" x="179" y="444" width="87" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="179" y="444" width="87" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="182" y="456.4">+LIGHT = 0</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="182" y="472.4">+DARK = 1</text>
+    <rect style="fill: #ffffff" x="179" y="480" width="87" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="179" y="480" width="87" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="150" y="46" width="210.2" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="150" y="46" width="210.2" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="255.1" y="60.4">&lt;&lt;interface&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="255.1" y="80">IMove</text>
+    <rect style="fill: #ffffff" x="150" y="90" width="210.2" height="116"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="150" y="90" width="210.2" height="116"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="153" y="102.4">+fromX: number</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="153" y="118.4">+fromY: number</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="153" y="134.4">+toX: number</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="153" y="150.4">+toY: number</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="153" y="166.4">+beatX?: number</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="153" y="182.4">+beatY?: number</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="153" y="198.4">+successiveMoves?: IMove[]</text>
+    <rect style="fill: #ffffff" x="150" y="206" width="210.2" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="150" y="206" width="210.2" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="396" y="30" width="164" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="396" y="30" width="164" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="478" y="44.4">&lt;&lt;enum&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="478" y="64">ValidationResult</text>
+    <rect style="fill: #ffffff" x="396" y="74" width="164" height="68"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="396" y="74" width="164" height="68"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="399" y="86.4">+OK = 0</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="399" y="102.4">+INVALID_ORIGIN = 1</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="399" y="118.4">+INVALID_TARGET = 2</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="399" y="134.4">+INVALID_REQUEST = 3</text>
+    <rect style="fill: #ffffff" x="396" y="142" width="164" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="396" y="142" width="164" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="612" y="51" width="125.5" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="612" y="51" width="125.5" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="674.75" y="65.4">&lt;&lt;interface&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="674.75" y="85">IMoveResult</text>
+    <rect style="fill: #ffffff" x="612" y="95" width="125.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="612" y="95" width="125.5" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="615" y="107.4">+moves: IMove[]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="615" y="123.4">+beats: IMove[]</text>
+    <rect style="fill: #ffffff" x="612" y="131" width="125.5" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="612" y="131" width="125.5" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-716.25" y="603" width="805.5" height="376"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-716.25" y="603" width="805.5" height="376"/>
+    <rect style="fill: #ffffff" x="-716.25" y="583" width="50.2" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-716.25" y="583" width="50.2" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-714.25" y="597">Router</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-697.05" y="640" width="695.3" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-697.05" y="640" width="695.3" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-349.4" y="658">CanActivateGuard</text>
+    <rect style="fill: #ffffff" x="-697.05" y="668" width="695.3" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-697.05" y="668" width="695.3" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-694.05" y="680.4">-_socket: SocketService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-694.05" y="696.4">-_router: Router</text>
+    <rect style="fill: #ffffff" x="-697.05" y="704" width="695.3" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-697.05" y="704" width="695.3" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-694.05" y="716.4">+canActivate(next:ActivatedRouteSnapshot,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-694.05" y="732.4">             state:RouterStateSnapshot): boolean | Observable&lt;boolean&gt; | Promise&lt;boolean&gt;</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-697.25" y="773" width="525.9" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-697.25" y="773" width="525.9" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="-434.3" y="787.4">&lt;&lt;interface&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-434.3" y="807">CanComponentDeactivate</text>
+    <rect style="fill: #ffffff" x="-697.25" y="817" width="525.9" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-697.25" y="817" width="525.9" height="8"/>
+    <rect style="fill: #ffffff" x="-697.25" y="825" width="525.9" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-697.25" y="825" width="525.9" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-694.25" y="837.4">+canDeactivate(): Observable&lt;boolean&gt; | Promise&lt;boolean&gt; | boolean;</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-698.25" y="871" width="764.6" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-698.25" y="871" width="764.6" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-315.95" y="889">CanDeactivateGuard</text>
+    <rect style="fill: #ffffff" x="-698.25" y="899" width="764.6" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-698.25" y="899" width="764.6" height="8"/>
+    <rect style="fill: #ffffff" x="-698.25" y="907" width="764.6" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-698.25" y="907" width="764.6" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-695.25" y="919.4">+canDeactivate(component:CanComponentDeactivate): boolean | Observable&lt;boolean&gt; | Promise&lt;boolean&gt;</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-745.25" y="1033.5" width="833" height="142.75"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-745.25" y="1033.5" width="833" height="142.75"/>
+    <rect style="fill: #ffffff" x="-745.25" y="1013.5" width="57.9" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-745.25" y="1013.5" width="57.9" height="20"/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-743.25" y="1027.5">Dialogs</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-477.95" y="1041.75" width="556.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-477.95" y="1041.75" width="556.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-199.6" y="1059.75">DialogService</text>
+    <rect style="fill: #ffffff" x="-477.95" y="1069.75" width="556.7" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-477.95" y="1069.75" width="556.7" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-474.95" y="1082.15">+_dialog: MatDialog</text>
+    <rect style="fill: #ffffff" x="-477.95" y="1089.75" width="556.7" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-477.95" y="1089.75" width="556.7" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-474.95" y="1102.15">+confirm(text:string,title:string='Confirmation',</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-474.95" y="1118.15">         confirm:string='Yes',decline:string='No'): Observable&lt;boolean&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-474.95" y="1134.15">+adblock()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-737.25" y="1044.25" width="210.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-737.25" y="1044.25" width="210.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-631.9" y="1062.25">AdblockDialogComponent</text>
+    <rect style="fill: #ffffff" x="-737.25" y="1072.25" width="210.7" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-737.25" y="1072.25" width="210.7" height="8"/>
+    <rect style="fill: #ffffff" x="-737.25" y="1080.25" width="210.7" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-737.25" y="1080.25" width="210.7" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-736.25" y="1101.25" width="209" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-736.25" y="1101.25" width="209" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-631.75" y="1119.25">ConfirmDialogComponent</text>
+    <rect style="fill: #ffffff" x="-736.25" y="1129.25" width="209" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-736.25" y="1129.25" width="209" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-733.25" y="1141.65">+data: any</text>
+    <rect style="fill: #ffffff" x="-736.25" y="1149.25" width="209" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-736.25" y="1149.25" width="209" height="8"/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-527.25,1115.25 -509.6,1115.25 -509.6,1131.75 -503.122,1131.75 "/>
+    <polygon style="fill: #ffffff" points="-477.95,1131.75 -491.95,1136.55 -505.95,1131.75 -491.95,1126.95 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-477.95,1131.75 -491.95,1136.55 -505.95,1131.75 -491.95,1126.95 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-504.13,1091.75 -509.754,1091.75 -509.754,1058.25 -526.55,1058.25 "/>
+    <polygon style="fill: #ffffff" points="-478.959,1091.75 -492.959,1096.55 -506.959,1091.75 -492.959,1086.95 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-478.959,1091.75 -492.959,1096.55 -506.959,1091.75 -492.959,1086.95 "/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-728.25" y="1209.5" width="153.05" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-728.25" y="1209.5" width="153.05" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-651.725" y="1227.5">DividerComponent</text>
+    <rect style="fill: #ffffff" x="-728.25" y="1237.5" width="153.05" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-728.25" y="1237.5" width="153.05" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-725.25" y="1249.9">+text: string</text>
+    <rect style="fill: #ffffff" x="-728.25" y="1257.5" width="153.05" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-728.25" y="1257.5" width="153.05" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-538.25" y="1231.5" width="102.4" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-538.25" y="1231.5" width="102.4" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="-487.05" y="1245.9">&lt;&lt;enum&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-487.05" y="1265.5">EndResult</text>
+    <rect style="fill: #ffffff" x="-538.25" y="1275.5" width="102.4" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-538.25" y="1275.5" width="102.4" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-535.25" y="1287.9">+DRAW = 0</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-535.25" y="1303.9">+VICTORY = 1</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-535.25" y="1319.9">+DEFEAT = 2</text>
+    <rect style="fill: #ffffff" x="-538.25" y="1327.5" width="102.4" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-538.25" y="1327.5" width="102.4" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-638.25" y="1951.5" width="341.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-638.25" y="1951.5" width="341.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-467.7" y="1969.5">EndComponent</text>
+    <rect style="fill: #ffffff" x="-638.25" y="1979.5" width="341.1" height="68"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-638.25" y="1979.5" width="341.1" height="68"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-635.25" y="1991.9">-_router: Router</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-635.25" y="2007.9">+_socket: SocketService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-635.25" y="2023.9">+dialogRef: MatDialogRef&lt;EndComponent&gt;</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-635.25" y="2039.9">+data: { result: EndResult, stats: string }</text>
+    <rect style="fill: #ffffff" x="-638.25" y="2047.5" width="341.1" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-638.25" y="2047.5" width="341.1" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-635.25" y="2059.9">+ngOnInit()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-734.25" y="1369.25" width="264.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-734.25" y="1369.25" width="264.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-602.2" y="1387.25">JoinGameComponent</text>
+    <rect style="fill: #ffffff" x="-734.25" y="1397.25" width="264.1" height="116"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-734.25" y="1397.25" width="264.1" height="116"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-731.25" y="1409.65">-_activeRoute: ActivatedRoute</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-731.25" y="1425.65">-_router: Router</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-731.25" y="1441.65">-_dialog: DialogService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-731.25" y="1457.65">-_socket: SocketService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-731.25" y="1473.65">-_gameService: GameService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-731.25" y="1489.65">+id: string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-731.25" y="1505.65">+gameStarted: boolean = true</text>
+    <rect style="fill: #ffffff" x="-734.25" y="1513.25" width="264.1" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-734.25" y="1513.25" width="264.1" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-731.25" y="1525.65">+ngOnInit()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-731.25" y="1541.65">+joinGame(id:string)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-731.25" y="1557.65">+startGame(color:Color,id:string)</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-694.25" y="1816.75" width="241" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-694.25" y="1816.75" width="241" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-573.75" y="1834.75">MenuComponent</text>
+    <rect style="fill: #ffffff" x="-694.25" y="1844.75" width="241" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-694.25" y="1844.75" width="241" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-691.25" y="1857.15">-_router: Router</text>
+    <rect style="fill: #ffffff" x="-694.25" y="1864.75" width="241" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-694.25" y="1864.75" width="241" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-691.25" y="1877.15">+newGame(visible:boolean=true)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-691.25" y="1893.15">+joinGame()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-378.125" y="1837.75" width="168.15" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-378.125" y="1837.75" width="168.15" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-294.05" y="1855.75">MoveListComponent</text>
+    <rect style="fill: #ffffff" x="-378.125" y="1865.75" width="168.15" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-378.125" y="1865.75" width="168.15" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1878.15">+_game: GameService</text>
+    <rect style="fill: #ffffff" x="-378.125" y="1885.75" width="168.15" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-378.125" y="1885.75" width="168.15" height="8"/>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="157.875" y="1323.75" width="187.65" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="157.875" y="1323.75" width="187.65" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="251.7" y="1341.75">MuteButtonComponent</text>
+    <rect style="fill: #ffffff" x="157.875" y="1351.75" width="187.65" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="157.875" y="1351.75" width="187.65" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="160.875" y="1364.15">+_stats: StatsService</text>
+    <rect style="fill: #ffffff" x="157.875" y="1371.75" width="187.65" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="157.875" y="1371.75" width="187.65" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="160.875" y="1384.15">+toggleMute()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="155.875" y="1429.75" width="371.9" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="155.875" y="1429.75" width="371.9" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="341.825" y="1447.75">NewGameComponent</text>
+    <rect style="fill: #ffffff" x="155.875" y="1457.75" width="371.9" height="148"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="155.875" y="1457.75" width="371.9" height="148"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1470.15">+visible: boolean</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1486.15">+id: string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1502.15">+points: string = ''</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1518.15">+gameStarted: boolean = false</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1534.15">-_activeRoute: ActivatedRoute</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1550.15">-_socket: SocketService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1566.15">-_gameService: GameService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1582.15">-_router: Router</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1598.15">-_dialog: DialogService</text>
+    <rect style="fill: #ffffff" x="155.875" y="1605.75" width="371.9" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="155.875" y="1605.75" width="371.9" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1618.15">+ngOnInit()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1634.15">+startGame(color:Color,id:string)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="158.875" y="1650.15">+canDeactivate(): Observable&lt;boolean&gt; | boolean</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-379.625" y="1497.25" width="248.7" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-379.625" y="1497.25" width="248.7" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-255.275" y="1515.25">PlayerTurnIndicatorComponent</text>
+    <rect style="fill: #ffffff" x="-379.625" y="1525.25" width="248.7" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-379.625" y="1525.25" width="248.7" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-376.625" y="1537.65">+player: Color</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-376.625" y="1553.65">+_game: GameService</text>
+    <rect style="fill: #ffffff" x="-379.625" y="1561.25" width="248.7" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-379.625" y="1561.25" width="248.7" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-376.625" y="1573.65">+ngOnInit()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-721.625" y="1619.25" width="157.45" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-721.625" y="1619.25" width="157.45" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-642.9" y="1637.25">QrCodeComponent</text>
+    <rect style="fill: #ffffff" x="-721.625" y="1647.25" width="157.45" height="52"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-721.625" y="1647.25" width="157.45" height="52"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-718.625" y="1659.65">+qr: any</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-718.625" y="1675.65">+text: string</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-718.625" y="1691.65">+code: QRious</text>
+    <rect style="fill: #ffffff" x="-721.625" y="1699.25" width="157.45" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-721.625" y="1699.25" width="157.45" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-718.625" y="1711.65">+ngOnInit()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-449.625" y="1653.25" width="433.5" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-449.625" y="1653.25" width="433.5" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-232.875" y="1671.25">ThemeButtonComponent</text>
+    <rect style="fill: #ffffff" x="-449.625" y="1681.25" width="433.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-449.625" y="1681.25" width="433.5" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-446.625" y="1693.65">+themes: { name: string, icon: string, css?: string }[]</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-446.625" y="1709.65">+body: HTMLBodyElement</text>
+    <rect style="fill: #ffffff" x="-449.625" y="1717.25" width="433.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-449.625" y="1717.25" width="433.5" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-446.625" y="1729.65">+ngOnInit()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-446.625" y="1745.65">+setTheme(css:string)</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="359.875" y="1686.75" width="217.9" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="359.875" y="1686.75" width="217.9" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="468.825" y="1704.75">AdblockService</text>
+    <rect style="fill: #ffffff" x="359.875" y="1714.75" width="217.9" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="359.875" y="1714.75" width="217.9" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="362.875" y="1727.15">-_dialog: DialogService</text>
+    <rect style="fill: #ffffff" x="359.875" y="1734.75" width="217.9" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="359.875" y="1734.75" width="217.9" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="362.875" y="1747.15">+check(force:boolean=false)</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="91.875" y="1692.75" width="202.5" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="91.875" y="1692.75" width="202.5" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="193.125" y="1710.75">AppComponent</text>
+    <rect style="fill: #ffffff" x="91.875" y="1720.75" width="202.5" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="91.875" y="1720.75" width="202.5" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="94.875" y="1733.15">+_adblock: AdblockService</text>
+    <rect style="fill: #ffffff" x="91.875" y="1740.75" width="202.5" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="91.875" y="1740.75" width="202.5" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="94.875" y="1753.15">+ngOnInit()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-122.125" y="1548.75" width="264.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-122.125" y="1548.75" width="264.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="9.925" y="1566.75">NotificationService</text>
+    <rect style="fill: #ffffff" x="-122.125" y="1576.75" width="264.1" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-122.125" y="1576.75" width="264.1" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-119.125" y="1589.15">+_snackBar: MatSnackBar</text>
+    <rect style="fill: #ffffff" x="-122.125" y="1596.75" width="264.1" height="20"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-122.125" y="1596.75" width="264.1" height="20"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-119.125" y="1609.15">+showNotification(message:string)</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-164.125" y="1820.75" width="726.1" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-164.125" y="1820.75" width="726.1" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="198.925" y="1838.75">SocketService</text>
+    <rect style="fill: #ffffff" x="-164.125" y="1848.75" width="726.1" height="116"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-164.125" y="1848.75" width="726.1" height="116"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="1861.15">+socket: SocketIOClient.Socket</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="1877.15">+onStart: Subject&lt;{ color: Color, id: string }&gt; = new Subject&lt;{ color: Color, id: string }&gt;()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="1893.15">+onGameId: Subject&lt;string&gt; = new Subject&lt;string&gt;()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="1909.15">+onDisconnect: Subject&lt;void&gt; = new Subject&lt;void&gt;()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="1925.15">+onMove: Subject&lt;IMove&gt; = new Subject&lt;IMove&gt;()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="1941.15">-_notification: NotificationService</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="1957.15">+_router: Router</text>
+    <rect style="fill: #ffffff" x="-164.125" y="1964.75" width="726.1" height="116"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-164.125" y="1964.75" width="726.1" height="116"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="1977.15">+newGame(visible:true)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="1993.15">+joinGame(id:string)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="2009.15">+disconnect()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="2025.15">+disconnected()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="2041.15">+performMove(move:IMove)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="2057.15">+rematch()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-161.125" y="2073.15">-initializeSocket()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-378.125" y="1196.25" width="333.4" height="28"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-378.125" y="1196.25" width="333.4" height="28"/>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="-211.425" y="1214.25">StatsService</text>
+    <rect style="fill: #ffffff" x="-378.125" y="1224.25" width="333.4" height="116"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-378.125" y="1224.25" width="333.4" height="116"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1236.65">+muted: boolean = false</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1252.65">+firstBlood: boolean = false</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1268.65">+streak: number = 0</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1284.65">+successiveKills: number = 0</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1300.65">+enemyStreak: number = 0</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1316.65">+enemySuccessiveKills: number = 0</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1332.65">+playbackEnded: Promise&lt;void&gt;</text>
+    <rect style="fill: #ffffff" x="-378.125" y="1340.25" width="333.4" height="116"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="-378.125" y="1340.25" width="333.4" height="116"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1352.65">+performMove(move:IMove,playerColor:Color,</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1368.65">             game:Game)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1384.65">+playSound()</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1400.65">+playSuccessiveKills(): number</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1416.65">+playKillingSpree(): number</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1432.65">+gameEnded(winner:boolean)</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="-375.125" y="1448.65">+reset()</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="1205.38" y="639.75" width="194.8" height="44"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1205.38" y="639.75" width="194.8" height="44"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="1302.78" y="654.15">&lt;&lt;interface&gt;&gt;</text>
+    <text font-size="16" style="fill: #000000;text-anchor:middle;font-family:sans-serif;font-style:normal;font-weight:700" x="1302.78" y="673.75">IPlayer</text>
+    <rect style="fill: #ffffff" x="1205.38" y="683.75" width="194.8" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1205.38" y="683.75" width="194.8" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1208.38" y="696.15">+socket: SocketIO.Socket</text>
+    <text font-size="12.8" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="1208.38" y="712.15">+color?: Color</text>
+    <rect style="fill: #ffffff" x="1205.38" y="719.75" width="194.8" height="8"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" x="1205.38" y="719.75" width="194.8" height="8"/>
+  </g>
+  <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="1205.38,661.75 1153.16,661.75 1153.16,661 1100.95,661 "/>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-44.725,1250.25 41.6375,1250.25 41.6375,1213 88.8284,1213 "/>
+    <polygon style="fill: #ffffff" points="114,1213 100,1217.8 86,1213 100,1208.2 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="114,1213 100,1217.8 86,1213 100,1208.2 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-1.75,654 95.125,654 95.125,654.5 192,654.5 "/>
+    <polygon style="fill: #000000" points="99.125,654.25 99.125,646.25 107.125,650.25 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-164.125,1874.75 -199.125,1874.75 -199.125,1284.38 19.25,1284.38 19.25,694 23.4216,694 "/>
+    <polygon style="fill: #ffffff" points="-1.75,694 12.25,689.2 26.25,694 12.25,698.8 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-1.75,694 12.25,689.2 26.25,694 12.25,698.8 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="589.072,802.5 598.9,802.5 598.9,1858.75 561.975,1858.75 "/>
+    <polygon style="fill: #ffffff" points="563.9,802.5 577.9,797.7 591.9,802.5 577.9,807.3 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="563.9,802.5 577.9,797.7 591.9,802.5 577.9,807.3 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="166.828,706.5 128.375,706.5 128.375,1055.75 78.75,1055.75 "/>
+    <polygon style="fill: #ffffff" points="192,706.5 178,711.3 164,706.5 178,701.7 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="192,706.5 178,711.3 164,706.5 178,701.7 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-428.078,1854.75 -418.25,1854.75 -418.25,1223.5 -575.2,1223.5 "/>
+    <polygon style="fill: #ffffff" points="-453.25,1854.75 -439.25,1849.95 -425.25,1854.75 -439.25,1859.55 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="-453.25,1854.75 -439.25,1849.95 -425.25,1854.75 -439.25,1859.55 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="129.698,1543.75 -217.165,1543.75 -217.165,1247.5 -575.2,1247.5 "/>
+    <polygon style="fill: #ffffff" points="154.869,1543.75 140.869,1548.55 126.869,1543.75 140.869,1538.95 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="154.869,1543.75 140.869,1548.55 126.869,1543.75 140.869,1538.95 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="88.8284,1249 -98.575,1249 -98.575,1989.5 -297.15,1989.5 "/>
+    <polygon style="fill: #ffffff" points="114,1249 100,1253.8 86,1249 100,1244.2 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #000000" points="114,1249 100,1253.8 86,1249 100,1244.2 "/>
+  </g>
+</svg>

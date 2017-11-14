@@ -17,7 +17,6 @@ export default class GameHandler {
     private player2: IPlayer;
     private game = new Game();
 
-    private turnStarted: number;
     private rematchRequested: string;
 
     constructor(private player1: IPlayer) {

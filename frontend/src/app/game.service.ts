@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import Game from '../../../logic/src/game';
-import { Piece, Color, IMove, EndResult } from '../../../logic/src/game';
+import { Piece, Color, IMove, IMoveResult } from '../../../logic/src/game';
 import { SocketService } from './socket.service';
 import { MatDialog } from '@angular/material';
-import { EndComponent } from './end/end.component';
+import { EndComponent, EndResult } from './end/end.component';
 import { StatsService } from './stats.service';
 import { Subject } from 'rxjs/Subject';
 
@@ -33,7 +33,7 @@ export class GameService {
           }
         }).afterClosed().subscribe((rematch) => {
           if (rematch) {
-            this._socket.start.subscribe(game => {
+            this._socket.onStart.subscribe(game => {
               this.reset(game.color);
               this.rematch.next();
             });
@@ -50,7 +50,7 @@ export class GameService {
     return this.game.board;
   }
 
-  getMoves(): { moves: IMove[], beats: IMove[] } {
+  getMoves(): IMoveResult {
     return this.game.getPlayerMoves(this.playerColor);
   }
 

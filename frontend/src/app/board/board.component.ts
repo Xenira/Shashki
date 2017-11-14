@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { GameService } from '../game.service';
-import { Piece, Color, IMove, EndResult } from '../../../../logic/src/game';
+import { Piece, Color, IMove, IMoveResult } from '../../../../logic/src/game';
 import { SocketService } from '../socket.service';
 import { EndComponent } from '../end/end.component';
 import { ActivatedRoute } from '@angular/router';
@@ -18,7 +18,7 @@ export class BoardComponent implements OnInit {
   @Input() color: Color;
 
   board: Piece[][];
-  moves: { moves: IMove[], beats: IMove[] } = { moves: [], beats: [] };
+  moves: IMoveResult = { moves: [], beats: [] };
   selectedMoves: IMove[];
   history: IMove[] = [];
   rotated = false;
