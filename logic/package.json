@@ -19,7 +19,7 @@
     "@types/node": "^8.0.46",
     "jasmine": "^2.8.0",
     "jasmine-ts": "^0.2.1",
-    "nodemon": "^1.12.1",
+    "nodemon": "^1.17.1",
     "npmts": "^8.0.24",
     "ts-node": "^3.3.0"
   }
