@@ -39,7 +39,7 @@
     "@angular/language-service": "^4.0.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.2",
-    "@types/node": "~9.4.6",
+    "@types/node": "~9.4.7",
     "@types/socket.io-client": "^1.4.31",
     "codelyzer": "~3.0.1",
     "jasmine-core": "~2.6.2",
