@@ -29,7 +29,7 @@
     "moment": "^2.21.0",
     "nicejob": "^1.0.1",
     "qrious": "^4.0.2",
-    "rxjs": "^5.5.6",
+    "rxjs": "^5.5.7",
     "socket.io-client": "^2.0.4",
     "zone.js": "^0.8.20"
   },
