@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/material": "^6.0.0-beta.4",
     "@angular/cdk": "^6.0.0-beta.4",
     "@angular/animations": "^5.2.9",
     "@angular/forms": "^5.2.9",
@@ -20,7 +21,6 @@
     "@angular/compiler": "^5.2.9",
     "@angular/core": "^5.2.9",
     "@angular/http": "^5.2.9",
-    "@angular/material": "^2.0.0-beta.12",
     "@angular/platform-browser-dynamic": "^5.2.9",
     "@angular/platform-browser": "^5.2.9",
     "@angular/router": "^5.2.9",
