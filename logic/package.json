@@ -16,10 +16,10 @@
   "dependencies": {},
   "devDependencies": {
     "@types/jasmine": "^2.8.6",
-    "@types/node": "^9.4.6",
+    "@types/node": "^9.4.7",
     "jasmine": "^3.1.0",
     "jasmine-ts": "^0.2.1",
-    "nodemon": "^1.17.1",
+    "nodemon": "^1.17.2",
     "npmts": "^8.0.27",
     "ts-node": "^5.0.1"
   }
