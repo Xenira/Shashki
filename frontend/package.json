@@ -24,7 +24,7 @@
     "@angular/platform-browser-dynamic": "^5.2.9",
     "@angular/platform-browser": "^5.2.9",
     "@angular/router": "^5.2.9",
-    "core-js": "^2.5.3",
+    "core-js": "^2.5.4",
     "just-detect-adblock": "^1.0.0",
     "moment": "^2.21.0",
     "nicejob": "^1.0.1",
