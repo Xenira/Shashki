@@ -33,9 +33,9 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/cdk@^6.0.0-beta.5":
-  version "6.0.0-beta-0"
-  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-6.0.0-beta-0.tgz#93a4d632bd588879e9a079004bff12ce2b66952b"
+"@angular/cdk@^6.0.0-rc.0":
+  version "6.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/@angular/cdk/-/cdk-6.0.0-rc.0.tgz#c849318a5d4aa2bcab2fd204c9e13b2d36406279"
   dependencies:
     tslib "^1.7.1"
 
