@@ -20,12 +20,28 @@
     rxjs "^5.5.6"
     source-map "^0.5.6"
 
+"@angular-devkit/core@^0.4.5":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/core/-/core-0.4.8.tgz#449718ec31de765f69f9fb7bead3a74f5b54c875"
+  dependencies:
+    ajv "~5.5.1"
+    chokidar "^1.7.0"
+    rxjs "^5.5.8"
+    source-map "^0.5.6"
+
 "@angular-devkit/schematics@0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-0.3.2.tgz#09a2268fad61f4f956f42db87913b8748c512a78"
   dependencies:
     "@ngtools/json-schema" "^1.1.0"
     rxjs "^5.5.6"
+
+"@angular-devkit/schematics@^0.4.5":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@angular-devkit/schematics/-/schematics-0.4.8.tgz#4fbe8d3e243771a96f20e7a5b2cd5152310f27cd"
+  dependencies:
+    "@ngtools/json-schema" "^1.1.0"
+    rxjs "^5.5.8"
 
 "@angular/animations@^5.2.9":
   version "5.2.9"
@@ -147,10 +163,13 @@
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-5.2.9.tgz#4838bb6319c99e8f5beb08bdfb392ee9a1173766"
 
-"@angular/material@^6.0.0-beta.5":
-  version "6.0.0-beta-0"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-6.0.0-beta-0.tgz#79249b3cc3d062e77c67c519e475cc2336f0660d"
+"@angular/material@^6.0.0-rc.0":
+  version "6.0.0-rc.0"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-6.0.0-rc.0.tgz#2089ddeb460a354390fb6b71e03287742be33034"
   dependencies:
+    "@angular-devkit/core" "^0.4.5"
+    "@angular-devkit/schematics" "^0.4.5"
+    "@schematics/angular" "^0.4.5"
     tslib "^1.7.1"
 
 "@angular/platform-browser-dynamic@^5.2.9":
@@ -195,6 +214,12 @@
 "@schematics/angular@0.3.2":
   version "0.3.2"
   resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-0.3.2.tgz#be209a032a3e4577992d94fbaa14bd4bfde485e2"
+  dependencies:
+    typescript "~2.6.2"
+
+"@schematics/angular@^0.4.5":
+  version "0.4.8"
+  resolved "https://registry.yarnpkg.com/@schematics/angular/-/angular-0.4.8.tgz#b292edbc2f185b2bcae950f9fe09819ab2ef2a7a"
   dependencies:
     typescript "~2.6.2"
 
