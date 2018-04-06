@@ -15,6 +15,10 @@
   dependencies:
     "@types/node" "*"
 
+"@types/events@*":
+  version "1.2.0"
+  resolved "https://registry.yarnpkg.com/@types/events/-/events-1.2.0.tgz#81a6731ce4df43619e5c8c945383b3e62a89ea86"
+
 "@types/express-serve-static-core@*":
   version "4.0.56"
   resolved "https://registry.yarnpkg.com/@types/express-serve-static-core/-/express-serve-static-core-4.0.56.tgz#4ed556dcff9012cce6b016e214fdc5ef6e99db7d"
@@ -40,10 +44,11 @@
     "@types/bson" "*"
     "@types/node" "*"
 
-"@types/mongoose@^4.7.23":
-  version "4.7.24"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-4.7.24.tgz#4aa853085bff9a72d03e7bea9ca100a4597846ea"
+"@types/mongoose@^5.0.8":
+  version "5.0.8"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.0.8.tgz#642cd7954907e0996ac423fdd2039477bda14f27"
   dependencies:
+    "@types/events" "*"
     "@types/mongodb" "*"
     "@types/node" "*"
 
