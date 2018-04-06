@@ -28,7 +28,7 @@
     "@types/mongoose": "^4.7.23",
     "@types/node": "^9.6.2",
     "@types/shortid": "^0.0.29",
-    "@types/socket.io": "^1.4.31",
+    "@types/socket.io": "^1.4.33",
     "nodemon": "^1.17.3",
     "ts-node": "^5.0.1",
     "tslint": "^5.9.1",
