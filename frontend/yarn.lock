@@ -147,9 +147,9 @@
   version "5.2.9"
   resolved "https://registry.yarnpkg.com/@angular/language-service/-/language-service-5.2.9.tgz#4838bb6319c99e8f5beb08bdfb392ee9a1173766"
 
-"@angular/material@^6.0.0-beta.5":
-  version "6.0.0-beta-0"
-  resolved "https://registry.yarnpkg.com/@angular/material/-/material-6.0.0-beta-0.tgz#79249b3cc3d062e77c67c519e475cc2336f0660d"
+"@angular/material@^6.0.0-rc.1":
+  version "6.0.0-rc.1"
+  resolved "https://registry.yarnpkg.com/@angular/material/-/material-6.0.0-rc.1.tgz#4f5d76aa6c1d34907027d0d410669f92490eef09"
   dependencies:
     tslib "^1.7.1"
 
