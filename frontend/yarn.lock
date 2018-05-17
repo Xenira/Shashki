@@ -165,11 +165,11 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/router@^5.2.9":
-  version "5.2.9"
-  resolved "https://registry.yarnpkg.com/@angular/router/-/router-5.2.9.tgz#0369df6e60c6da3a5842c6eb35e3958d4ffe727e"
+"@angular/router@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/router/-/router-6.0.2.tgz#a7c925751accede6c5b4a8369170a53f3a48b940"
   dependencies:
-    tslib "^1.7.1"
+    tslib "^1.9.0"
 
 "@ngtools/json-schema@1.2.0":
   version "1.2.0"
