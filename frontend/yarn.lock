@@ -137,11 +137,11 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/http@^5.2.9":
-  version "5.2.9"
-  resolved "http://registry.npmjs.org/@angular/http/-/http-5.2.9.tgz#2ffea536e181bc97e2867593d57425ea7853285b"
+"@angular/http@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/http/-/http-6.0.2.tgz#bd0db5b296c45ab314ef38208a40a39f82557e82"
   dependencies:
-    tslib "^1.7.1"
+    tslib "^1.9.0"
 
 "@angular/language-service@^6.0.2":
   version "6.0.2"
