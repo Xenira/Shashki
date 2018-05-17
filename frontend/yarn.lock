@@ -125,11 +125,11 @@
   dependencies:
     tslib "^1.7.1"
 
-"@angular/core@^5.2.10":
-  version "5.2.10"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-5.2.10.tgz#a6eba06cae7267efbd2666e3fa5e42b84c2261de"
+"@angular/core@^6.0.2":
+  version "6.0.2"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-6.0.2.tgz#d183730d73182a4590a5d71083db45655f210e69"
   dependencies:
-    tslib "^1.7.1"
+    tslib "^1.9.0"
 
 "@angular/forms@^6.0.2":
   version "6.0.2"
