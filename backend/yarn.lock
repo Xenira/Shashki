@@ -62,9 +62,9 @@
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/shortid/-/shortid-0.0.29.tgz#8093ee0416a6e2bf2aa6338109114b3fbffa0e9b"
 
-"@types/socket.io@^1.4.33":
-  version "1.4.33"
-  resolved "https://registry.yarnpkg.com/@types/socket.io/-/socket.io-1.4.33.tgz#41e7e30e858b643519a139b8c93280390ccdff8d"
+"@types/socket.io@^1.4.34":
+  version "1.4.34"
+  resolved "https://registry.yarnpkg.com/@types/socket.io/-/socket.io-1.4.34.tgz#858860c7e6dd7eb55abc39da55f958c2172ccf41"
   dependencies:
     "@types/node" "*"
 
