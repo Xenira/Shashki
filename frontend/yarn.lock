@@ -144,9 +144,9 @@
     semver "5.6.0"
     semver-intersect "1.4.0"
 
-"@types/jasmine@*", "@types/jasmine@~3.3.8":
-  version "3.3.8"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.3.8.tgz#fc6abd92f7121431685ec986f0ec8f77b4390a3e"
+"@types/jasmine@*", "@types/jasmine@~3.3.12":
+  version "3.3.12"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.3.12.tgz#bf282cb540e9ad7a0a04b742082c073b655eab39"
 
 "@types/jasminewd2@~2.0.6":
   version "2.0.6"
