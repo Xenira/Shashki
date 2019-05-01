@@ -31,7 +31,7 @@
     "@types/socket.io": "^2.1.2",
     "nodemon": "^1.18.10",
     "ts-node": "^8.0.2",
-    "tslint": "^5.12.1",
+    "tslint": "^5.16.0",
     "typescript": "^3.3.3"
   },
   "license": "MIT",
