@@ -45,9 +45,9 @@
   version "0.4.29"
   resolved "https://registry.yarnpkg.com/@types/istanbul/-/istanbul-0.4.29.tgz#29c8cbb747ac57280965545dc58514ba0dbb99af"
 
-"@types/jasmine@^3.3.8":
-  version "3.3.8"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.3.8.tgz#fc6abd92f7121431685ec986f0ec8f77b4390a3e"
+"@types/jasmine@^3.3.13":
+  version "3.3.13"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.3.13.tgz#d5daabb0af47bcddee40597acf6e804433bab439"
 
 "@types/lodash@4.x.x", "@types/lodash@^4.14.50", "@types/lodash@^4.14.55", "@types/lodash@^4.14.64", "@types/lodash@^4.14.68", "@types/lodash@^4.14.74", "@types/lodash@^4.14.85", "@types/lodash@^4.14.97":
   version "4.14.104"
