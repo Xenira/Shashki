@@ -64,7 +64,7 @@
 
 "@angular/compiler-cli@^5.2.9":
   version "5.2.9"
-  resolved "http://registry.npmjs.org/@angular/compiler-cli/-/compiler-cli-5.2.9.tgz#36a069937d50a8a294eda233b5b1b2c71139751f"
+  resolved "https://registry.npmjs.org/@angular/compiler-cli/-/compiler-cli-5.2.9.tgz#36a069937d50a8a294eda233b5b1b2c71139751f"
   dependencies:
     chokidar "^1.4.2"
     minimist "^1.2.0"
@@ -73,7 +73,7 @@
 
 "@angular/compiler@^5.2.9":
   version "5.2.9"
-  resolved "http://registry.npmjs.org/@angular/compiler/-/compiler-5.2.9.tgz#1d03bc1e8b38c259bc58114d691c2140d244f8f5"
+  resolved "https://registry.npmjs.org/@angular/compiler/-/compiler-5.2.9.tgz#1d03bc1e8b38c259bc58114d691c2140d244f8f5"
   dependencies:
     tslib "^1.7.1"
 
@@ -144,9 +144,9 @@
     semver "5.6.0"
     semver-intersect "1.4.0"
 
-"@types/jasmine@*", "@types/jasmine@~3.3.8":
-  version "3.3.8"
-  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.3.8.tgz#fc6abd92f7121431685ec986f0ec8f77b4390a3e"
+"@types/jasmine@*", "@types/jasmine@~3.3.16":
+  version "3.3.16"
+  resolved "https://registry.yarnpkg.com/@types/jasmine/-/jasmine-3.3.16.tgz#7c84074f5d7f84da9a14f816ccfb9aeb4da13f27"
 
 "@types/jasminewd2@~2.0.6":
   version "2.0.6"
