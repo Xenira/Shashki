@@ -64,7 +64,7 @@
 
 "@angular/compiler-cli@^5.2.9":
   version "5.2.9"
-  resolved "http://registry.npmjs.org/@angular/compiler-cli/-/compiler-cli-5.2.9.tgz#36a069937d50a8a294eda233b5b1b2c71139751f"
+  resolved "https://registry.npmjs.org/@angular/compiler-cli/-/compiler-cli-5.2.9.tgz#36a069937d50a8a294eda233b5b1b2c71139751f"
   dependencies:
     chokidar "^1.4.2"
     minimist "^1.2.0"
@@ -73,7 +73,7 @@
 
 "@angular/compiler@^5.2.9":
   version "5.2.9"
-  resolved "http://registry.npmjs.org/@angular/compiler/-/compiler-5.2.9.tgz#1d03bc1e8b38c259bc58114d691c2140d244f8f5"
+  resolved "https://registry.npmjs.org/@angular/compiler/-/compiler-5.2.9.tgz#1d03bc1e8b38c259bc58114d691c2140d244f8f5"
   dependencies:
     tslib "^1.7.1"
 
@@ -953,9 +953,13 @@ copy-descriptor@^0.1.0:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/copy-descriptor/-/copy-descriptor-0.1.1.tgz#676f6eb3c39997c2ee1ac3a924fd6124748f578d"
 
-core-js@^2.2.0, core-js@^2.4.0, core-js@^2.6.4:
+core-js@^2.2.0, core-js@^2.4.0:
   version "2.6.4"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.4.tgz#b8897c062c4d769dd30a0ac5c73976c47f92ea0d"
+
+core-js@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-3.2.1.tgz#cd41f38534da6cc59f7db050fe67307de9868b09"
 
 core-js@~2.3.0:
   version "2.3.0"
